@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<domain-models xmlns="http://axelor.com/xml/ns/domain-models"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://axelor.com/xml/ns/domain-models
+  http://axelor.com/xml/ns/domain-models/domain-models_5.4.xsd">
+  
+  <module package="com.aop.company.db" name="company"/>
+  
+  <entity name="Department">
+  
+  <string name="departmentName" />
+  <string name="departmentManager" />
+  
+  <!-- one2many one dept many emp - bidirectional -->
+  <one-to-many ref="Employee" name="deptEmp" mappedBy="empDept"/>
+  
+  </entity>
+  </domain-models>

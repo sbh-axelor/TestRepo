@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<object-views xmlns="http://axelor.com/xml/ns/object-views"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://axelor.com/xml/ns/object-views
+  http://axelor.com/xml/ns/object-views/object-views_5.4.xsd">
+  
+  
+  <grid model="com.aop.company.db.Employee" title="Employee Detail" name="emp-grid">
+	  <field name="empFullName" />
+	  <field name="firstName" />
+	  <field name="lastName" />
+	  <field name="designation"/>
+  </grid>
+  
+  <form model="com.aop.company.db.Employee" title="Employees Form" name="emp-form">
+ 	  <panel name="empPanel" title="Employee Overview" colSpan="8"> 
+     	  <field name="empFullName" readonly="false" >
+     	  	 <editor>
+	          <field name="firstName" colSpan="3"/>
+	          <field name="lastName" colSpan="4"/>
+			</editor> 
+		  </field>  
+		  <field name="designation" canNew="New" />
+		  <!-- view of m2o  -->
+		  <!-- <field name="" x-type="relationType" x-target="targeted view-model" x-target-name="target field name" -->
+		  <field name="empDept" 
+		  		 title="Department" 
+		  		 x-type="many-to-one" 
+		  		 x-target="com.aop.company.db.Department"  
+		  		 x-target-name="departmentName"/>  
+	  </panel>
+	  
+	  <panel-related field="empProj" name="empPanel">
+	  		<field name="projectName" />
+			<field name="projectManager" />
+			<field name="prStDate" title="Start Date"/>
+	  </panel-related>
+	  
+	 
+  </form>
+  
+  </object-views>

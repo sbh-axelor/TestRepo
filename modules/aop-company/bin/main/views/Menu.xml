@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<object-views xmlns="http://axelor.com/xml/ns/object-views"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://axelor.com/xml/ns/object-views
+  http://axelor.com/xml/ns/object-views/object-views_5.4.xsd">
+
+	<menuitem title="Company Detail" name="menu-comp" />
+
+	<menuitem title="Employees" name="menu-comp-emp"
+		parent="menu-comp" action="emp.click" />
+	<menuitem title="Departments" name=" menu-comp-dept"
+		parent="menu-comp" action="dept.click" />
+	<menuitem title="Projects" name="menu-comp-proj"
+		parent="menu-comp" action="proj.click" />
+
+	<menuitem name="menu-project-tasks-tree" parent="menu-comp"
+		title="Project Tasks (tree)" action="project.tasks.tree" />
+
+	<action-view name="project.tasks.tree" title="Projects">
+		<view type="tree" name="project-task-tree" />
+	</action-view>
+
+	<action-view name="emp.click" title="Employees"
+		model="com.aop.company.db.Employee">
+		<view type="grid" name="emp-grid" />
+		<view type="form" name="emp-form" />
+	</action-view>
+
+	<action-view name="dept.click" title="Departments"
+		model="com.aop.company.db.Department">
+		<view type="grid" name="dept-grid" />
+		<view type="form" name="dept-form" />
+	</action-view>
+
+	<action-view name="proj.click" title="Projects"
+		model="com.aop.company.db.Project">
+		<view type="grid" name="proj-grid" />
+		<view type="form" name="proj-form" />
+	</action-view>
+
+	<menuitem name="menu-project-test" title="Test Menu"/>
+	<menuitem title="Tree View" name="menu-project-test-tree" parent="menu-project-test" action="tree.all"/>
+	<menuitem title="Configure" name="menu-project-test-config" parent="menu-project-test"/>
+	<menuitem title="City" name="menu-project-test-config-city" parent="menu-project-test-config" action="city.all"/>
+	<menuitem title="State" name="menu-project-test-config-state" parent="menu-project-test-config" action="state.all"/>
+	<menuitem title="Country" name="menu-project-test-config-country" parent="menu-project-test-config" action="country.all"/>
+	
+	<action-view name="tree.all" title="" model="com.aop.company.db.Country">
+		<view type="tree" name="test-tree"/>
+	</action-view>
+	
+	
+	<action-view name="city.all" title="" model="com.aop.company.db.City">
+		<view type="grid" name="city-grid"/>
+		<view type="form" name="city-form"/>	
+	</action-view>	
+		<action-view name="state.all" title="" model="com.aop.company.db.State">
+		<view type="grid" name="state-grid"/>
+		<view type="form" name="state-form"/>	
+	</action-view>	
+		<action-view name="country.all" title="" model="com.aop.company.db.Country">
+		<view type="grid" name="country-grid"/>
+		<view type="form" name="country-form"/>	
+	</action-view>	
+
+
+
+
+
+</object-views>
