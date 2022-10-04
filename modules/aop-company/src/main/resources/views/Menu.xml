@@ -10,12 +10,13 @@
 	<menuitem title="Projects" name="menu-comp-proj" parent="menu-comp" action="proj.click" />
 
 	<menuitem name="menu-project-tasks-tree" parent="menu-comp" title="Project Tasks (tree)" action="project.tasks.tree" />
-
+	
 	<action-view name="project.tasks.tree" title="Projects">
 		<view type="tree" name="project-task-tree" />
 	</action-view>
 
 	<action-view name="emp.click" title="Employees" model="com.aop.company.db.Employee">
+		<view type="cards" name="emp-card"/>
 		<view type="grid" name="emp-grid" />
 		<view type="form" name="emp-form" />
 	</action-view>
@@ -30,16 +31,16 @@
 		<view type="form" name="proj-form" />
 	</action-view>
 
-	<menuitem name="menu-project-test" title="Test Menu"/>
+<!-- TREE VIEW -->
+	<menuitem name="menu-project-test" title="Locations"/>
 	<menuitem title="Tree View" name="menu-project-test-tree" parent="menu-project-test" action="tree.all"/>
-	
 	<menuitem title="Configure" name="menu-project-test-config" parent="menu-project-test"/>
 	<menuitem title="City" name="menu-project-test-config-city" parent="menu-project-test-config" action="city.all"/>
 	<menuitem title="State" name="menu-project-test-config-state" parent="menu-project-test-config" action="state.all"/>
 	<menuitem title="Country" name="menu-project-test-config-country" parent="menu-project-test-config" action="country.all"/>
 	<menuitem title="Continent" name="menu-project-test-config-continent" parent="menu-project-test-config" action="continent.all"/>
-	
-	<action-view name="tree.all" title="" model="com.aop.company.db.Country">
+
+	<action-view name="tree.all" title="" model="com.aop.company.db.Continent">
 		<view type="tree" name="test-tree"/>
 	</action-view>
 	
@@ -60,7 +61,18 @@
 	
 	<action-view name="continent.all" title="" model="com.aop.company.db.Continent">
 		<view type="grid" name="continent-grid"/>
-		<view type="form" name="continent-form"/>	
-	</action-view>	
+		<view type="form" name="continent-form"/>
+			
+	</action-view>
+	
+<!-- CARD VIEW 
+	<menuitem title="Cards" name="menu-id-card" />
+		<menuitem title="Card view" name="menu-id-card-test" parent="menu-id-card" action="card.all"/>
+		
+	<action-view name="card.all" model="com.aop.company.db.Employee" title="">
+		<view type="cards" name="id-card"/>
+		<view type="form" name="emp-form"/>
+		<view type="grid" name="emp-grid"/>
+	</action-view> -->
 	
 </object-views>

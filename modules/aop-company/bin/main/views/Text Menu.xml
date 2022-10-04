@@ -4,28 +4,18 @@
 	xsi:schemaLocation="http://axelor.com/xml/ns/object-views
   http://axelor.com/xml/ns/object-views/object-views_5.4.xsd">
   
+  <grid model="com.aop.company.db.Continent" title="Continents"
+		name="continent-grid">
+		<field name="code" />
+		<field name="name" />
+	</grid>
+	<form model="com.aop.company.db.Continent" title="Continent"
+		name="continent-form">
+		<field name="code" />
+		<field name="name" />
+	</form>
   
-  	<tree name="test-tree" title="Test Tree">
-		<column name="code" type="string"/>
-		<column name="name" type="string"/>
-	<node model="com.aop.company.db.Country">
-		<field name="code"/>
-		<field name="name"/>
-	</node>	
-	
-	<node model="com.aop.company.db.State" parent="country">
-		<field name="code"/>
-		<field name="name"/>
-	</node>
-	
-		<node model="com.aop.company.db.City" parent="country">
-		<field name="code"/>
-		<field name="name"/>
-	</node>
-		
-	</tree>
-
-	<grid model="com.aop.company.db.Country" title="Countries"
+   <grid model="com.aop.company.db.Country" title="Countries"
 		name="country-grid">
 		<field name="code" />
 		<field name="name" />
@@ -34,6 +24,7 @@
 		name="country-form">
 		<field name="code" />
 		<field name="name" />
+		<field name="continent" />
 	</form>
 
 	<grid model="com.aop.company.db.State" title="State"
@@ -60,5 +51,38 @@
 		<field name="state" />
 		<field name="country" />
 	</form>
+  
+  	<tree name="test-tree" title="Test Tree"> 
+  	<!-- Define tree columns -->
+	<column name="code" type="string"/>
+	<column name="name" type="string"/>
+	
+		<!-- 1st level node -->
+		<node model="com.aop.company.db.Continent">
+			<field name="code"/>
+			<field name="name"/>
+		</node>	
+		
+		<!--  2nd level node-->
+		<node model="com.aop.company.db.Country" parent="continent">
+			<field name="code"/>
+			<field name="name"/>
+		</node>
+		
+		<!-- 3rd level node -->
+		<node model="com.aop.company.db.State" parent="country">
+			<field name="code"/>
+			<field name="name"/>
+		</node>
+		
+		<!-- 4th level node -->
+		<node model="com.aop.company.db.City" parent="state">
+			<field name="code"/>
+			<field name="name"/>
+		</node>	
+	</tree>
+
+
+	
 		
 </object-views>

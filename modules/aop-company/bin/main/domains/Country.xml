@@ -6,8 +6,9 @@
   
   <module package="com.aop.company.db" name="company"/>
   
-  <entity name="Country">
-  <string name="code" />
-  <string name="name" /> 
-  </entity>
-  </domain-models>
+	  <entity name="Country">
+		  <string name="code" />
+		  <string name="name" /> 
+		  <many-to-one ref="com.aop.company.db.Continent" name="continent" />		  	  
+	  </entity>
+ </domain-models>

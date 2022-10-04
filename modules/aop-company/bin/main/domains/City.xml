@@ -6,10 +6,11 @@
   
   <module package="com.aop.company.db" name="company"/>
   
-  <entity name="City">
-  <string name="code" />
-  <string name="name" /> 
-<many-to-one ref="State" name="state"/>
-<many-to-one ref="Country" name="country"/>
-  </entity>
-  </domain-models>
+	  <entity name="City">
+		  <string name="code" />
+		  <string name="name" /> 
+		  <many-to-one ref="com.aop.company.db.Continent" name="continent"/>
+		  <many-to-one ref="com.aop.company.db.Country" name="country"/>
+		  <many-to-one ref="com.aop.company.db.State" name="state"/>
+	  </entity>
+</domain-models>

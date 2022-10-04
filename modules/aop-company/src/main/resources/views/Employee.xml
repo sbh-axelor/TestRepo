@@ -3,13 +3,14 @@
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xsi:schemaLocation="http://axelor.com/xml/ns/object-views
   http://axelor.com/xml/ns/object-views/object-views_5.4.xsd">
-  
-  
+   
   <grid model="com.aop.company.db.Employee" title="Employee Detail" name="emp-grid">
 	  <field name="empFullName" />
 	  <field name="firstName" />
 	  <field name="lastName" />
 	  <field name="designation"/>
+	  <field name="email" />
+	  <field name="phone" />
   </grid>
   
   <form model="com.aop.company.db.Employee" title="Employees Form" name="emp-form">
@@ -21,6 +22,16 @@
 			</editor> 
 		  </field>  
 		  <field name="designation" canNew="New" />
+		  <field name="email">
+		      <viewer><![CDATA[ 
+			      <a href="mailto:{{record.email}}">{{record.email}}</a>
+			  ]]></viewer>
+		  </field>
+		  <field name="phone">
+			  <viewer><![CDATA[
+				      <a href="tel:{{record.phone}}">{{record.phone}}</a>
+			   ]]></viewer>
+   		 </field>
 		  <!-- view of m2o  -->
 		  <!-- <field name="" x-type="relationType" x-target="targeted view-model" x-target-name="target field name" -->
 		  <field name="empDept" 
@@ -34,9 +45,31 @@
 	  		<field name="projectName" />
 			<field name="projectManager" />
 			<field name="prStDate" title="Start Date"/>
-	  </panel-related>
-	  
-	 
+	  </panel-related> 
   </form>
+  
+   <cards name="emp-card" model="com.aop.company.db.Employee" title="Employee Id Card">
+  	<field name="empFullName" />
+  	<field name="phone" />
+  	<field name="email" />
+  	<field name="address" />
+ 	<field name="image" />
+      <template>
+ 		<![CDATA[
+ 			<div class="span4 card-image">
+    			<img ng-if="hasImage" ng-src="{{$image(null, 'image')}}">
+    			<img ng-if="!hasImage" src="img/user.png">
+   				<strong>{{empFullName}}</strong>
+  			</div>
+  			<div class="span8">
+		    <content>
+		      <abbr ng-if="phone" title="Phone">P:</abbr> {{phone}}<br>
+		      <abbr ng-if="email" title="Email">E:</abbr> {{email}}<br>
+		    </content>
+		   </div>	
+ 		]]> 	
+ 	</template>
+  </cards>
+  
   
   </object-views>
