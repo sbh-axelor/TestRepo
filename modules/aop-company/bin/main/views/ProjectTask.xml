@@ -6,33 +6,26 @@
   
    <grid name="project-task-grid" title="Project Tasks" model="com.aop.company.db.ProjectTask">
     <field name="name" />
-    <field name="createDate" />
     <field name="startDate" />
     <field name="endDate" />
-    <field name="user" />
-    <field name="project" />
+    <field name="project title" />
     <field name="priority" />
-    <field name="state" />
     <field name="progress" /> <!-- widget="Progress" -->
   </grid>
   
   <form name="project-task-form" title="Project Task" model="com.aop.company.db.ProjectTask" onNew="project.task.on.new">
     <panel title="Overview">
       <field name="name"/>
-      <field name="priority"/>
-      <field name="createDate"/>
-      <field name="deadlineDate"/>
+      <field name="priority"/>  
+      <field name="project" title="Projects" x-type="many-to-one" x-target="com.aop.company.db.Project" x-target-name="projTasks" />
+      <field name="progress" /> <!-- widget="Progress" --> 
       <field name="startDate"/>
       <field name="endDate"/>
-      <field name="project"/>
-      <field name="user"/>
-      <field name="parentTask"/>
-      <field name="sequence"/>
-      <field name="state" />
-      <field name="progress" /> <!-- widget="Progress" -->
-    </panel>
-
+      <field name="deadlineDate"/>   
+  </panel>
+	
 	</form> 
+	
 	
 	<tree name="project-task-tree" title="Project Tasks Tree">
 		<column name="title" type="string"/>
@@ -48,5 +41,28 @@
 		</node>
 	
 	</tree> 
-  
+	
+	<kanban name="project-task-kanban" title="Project Tasks" model="com.aop.company.db.ProjectTask"
+    columnBy="state" sequenceBy="priority" onNew="project.task.kanban.on.new" limit="10">
+    <field name="name"/>
+    <field name="notes" />
+    <field name="progress"/>
+    <field name="startDate"/>
+    <field name="endDate"/>
+    <field name="user"/>
+    <hilite color="danger" if="progress == 0" />
+    <hilite color="success" if="progress == 100" />
+    <hilite color="info" if="progress >= 50" />
+    <hilite color="warning" if="progress > 0" />
+    <template><![CDATA[
+    <h4>{{name}}</h4>
+    <img ng-if="user" ng-src="{{$image('user', 'image')}}">
+    <div class="card-body">{{notes}}</div>
+    <div class="card-footer">
+      <i class='fa fa-clock-o'></i> <span ng-if="startDate">{{$moment(startDate).format('LLL')}}</span>
+    </div>
+    ]]></template>
+  </kanban>
+   
+   
   </object-views>

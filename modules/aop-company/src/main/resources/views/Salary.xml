@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<object-views xmlns="http://axelor.com/xml/ns/object-views"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://axelor.com/xml/ns/object-views
+  http://axelor.com/xml/ns/object-views/object-views_5.4.xsd">
+  
+  <grid model="com.aop.company.db.Salary" title="Salary Detail" name="salary-grid">
+  		<field name="name" title="Employee Name" />
+	  	<field name="designation" title= "Designation" />
+	  	<field name="department" title = "Department"/>
+	  	<field name="basic" title="Basic Salary" />
+	  	<field name="inhand" title="Inhand Salary" />  
+  </grid>
+  
+  <form model="com.aop.company.db.Salary" title="Salary Form" name="salary-form">
+  		<field name="name" title="Employee Name" />
+	  	<field name="designation" title= "Designation" />
+	  	<field name="department" title = "Department"/>
+	  	<field name="basic" title="Basic Salary" />
+	  	<field name="inhand" title="Inhand Salary" />  
+  </form>
+  
+  </object-views>

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<domain-models xmlns="http://axelor.com/xml/ns/domain-models"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://axelor.com/xml/ns/domain-models
+  http://axelor.com/xml/ns/domain-models/domain-models_5.4.xsd">
+  
+  <module package="com.aop.company.db" name="company"/>
+  
+	  <entity name="Salary">
+	  	<string name="name" title="Employee Name" />
+	  	<string name="designation" title= "Designation" />
+	  	<string name="department" title = "Department"/>
+	  	<string name="basic" title="Basic Salary" />
+	  	<string name="inhand" title="Inhand Salary" />	
+	  </entity>
+	</domain-models>  

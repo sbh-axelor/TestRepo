@@ -5,20 +5,21 @@
   http://axelor.com/xml/ns/object-views/object-views_5.4.xsd">
 
 	<menuitem title="Company Detail" name="menu-comp" />
+	
 	<menuitem title="Employees" name="menu-comp-emp" parent="menu-comp" action="emp.click" />
 	<menuitem title="Departments" name=" menu-comp-dept" parent="menu-comp" action="dept.click" />
-	<menuitem title="Projects" name="menu-comp-proj" parent="menu-comp" action="proj.click" />
-
-	<menuitem name="menu-project-tasks-tree" parent="menu-comp" title="Project Tasks (tree)" action="project.tasks.tree" />
+	<menuitem title="Salary" name="menu-comp-salary" parent="menu-comp" action="salary.click"/>
+	<menuitem title="Project" name="menu-comp-project" parent="menu-comp"/>
+	<menuitem title="Details" name="menu-comp-project-detail" parent="menu-comp-project" action="proj.click" />
+	<menuitem title="Tasks" name="menu-comp-project-task" parent="menu-comp-project" action="projectTask.click"/>
+	<menuitem title="Task Tree" name="menu-comp-project-tree" parent="menu-comp-project" action="projectTaskTree.click"/>
+			
+	<!--  <menuitem name="menu-project-tasks-tree" parent="menu-comp" title="Project Tasks (tree)" action="project.tasks.tree" /> -->
 	
-	<action-view name="project.tasks.tree" title="Projects">
-		<view type="tree" name="project-task-tree" />
-	</action-view>
-
-	<action-view name="emp.click" title="Employees" model="com.aop.company.db.Employee">
-		<view type="cards" name="emp-card"/>
+		<action-view name="emp.click" title="Employees" model="com.aop.company.db.Employee">
 		<view type="grid" name="emp-grid" />
 		<view type="form" name="emp-form" />
+		<view type="cards" name="emp-card"/>
 	</action-view>
 
 	<action-view name="dept.click" title="Departments" model="com.aop.company.db.Department">
@@ -26,12 +27,24 @@
 		<view type="form" name="dept-form" />
 	</action-view>
 
+
+
 	<action-view name="proj.click" title="Projects" model="com.aop.company.db.Project">
 		<view type="grid" name="proj-grid" />
 		<view type="form" name="proj-form" />
 	</action-view>
+	
+	<action-view name="projectTask.click" title="Project Task" model="com.aop.company.db.ProjectTask">	
+		<view type="grid" name="project-task-grid"/>
+		<view type="form" name="project-task-form"/>
+	</action-view>
+		
+		
+	<action-view name="projectTaskTree.click" title="Project Task Tree">
+		<view type="tree" name="project-task-tree"/>
+	</action-view>
 
-<!-- TREE VIEW -->
+<!-- TREE VIEW locations-->
 	<menuitem name="menu-project-test" title="Locations"/>
 	<menuitem title="Tree View" name="menu-project-test-tree" parent="menu-project-test" action="tree.all"/>
 	<menuitem title="Configure" name="menu-project-test-config" parent="menu-project-test"/>
@@ -63,6 +76,11 @@
 		<view type="grid" name="continent-grid"/>
 		<view type="form" name="continent-form"/>
 			
+	</action-view>
+	
+	<action-view name="salary.click" title="" model="com.aop.company.db.Salary">
+		<view type="form" name="salary-form"/>
+		<view type="grid" name="salary-grid"/>
 	</action-view>
 	
 <!-- CARD VIEW 

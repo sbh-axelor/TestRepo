@@ -6,12 +6,12 @@
 
   <module name="company" package="com.aop.company.db" />
 
-   <entity name="ProjectTask" table="PROJECT_TASK" cacheable="true">
+   <entity name="ProjectTask">
     <string name="name" title="Task Summary" required="true" />
+    <string name="project" />
     <string name="notes" multiline="true"/>
-    <string name="state"  /> <!--  selection="project.task.state.selection" -->
+    <string name="state"  /> <!--  selection=project.task.state.selection -->
     <integer name="priority"/>
-    <datetime name="createDate" required="true"/>
     <datetime name="startDate"/>
     <datetime name="endDate"/>
     <date name="deadlineDate"/>
@@ -25,7 +25,29 @@
   
  <!--  	<many-to-one ref="Project" name="projTasks"/> -->
  	
- 	<many-to-one  name="projTasks" ref="Project"/> 
+ 	<many-to-one  name="projTasks" ref="com.aop.company.db.Project"/> 
+ 	
+ 	<datetime name="plannedStartDate"/>
+    <decimal name="plannedDuration"/>
+    <decimal name="plannedProgress"/>
+    <many-to-one name="parentTask" ref="ProjectTask" title="Parent task" />
+    <integer name="sequence" title="Sequence" />
+    <many-to-many name="finishToStartTaskSet" ref="ProjectTask" title="Tasks to finish before start"
+      table="PROJECT_TASK_F2S"
+      column="from_task_id"
+    column2="to_task_id" />
+    <many-to-many name="startToStartTaskSet" ref="ProjectTask" title="Tasks to start before start"
+      table="PROJECT_TASK_S2S"
+      column="from_task_id"
+      column2="to_task_id" />
+    <many-to-many name="finishToFinishTaskSet" ref="ProjectTask" title="Tasks to finish before finish"
+      table="PROJECT_TASK_F2F"
+      column="from_task_id"
+      column2="to_task_id" />
+    <many-to-many name="startToFinishTaskSet" ref="ProjectTask" title="Tasks to start before finish"
+      table="PROJECT_TASK_S2F"
+      column="from_task_id"
+      column2="to_task_id" />
  	
   </entity>
 
