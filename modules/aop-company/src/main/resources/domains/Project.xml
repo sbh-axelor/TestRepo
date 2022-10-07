@@ -7,17 +7,16 @@
   <module package="com.aop.company.db" name="company"/>
   
   <entity name="Project">
-  
-  <string name="projectName" />
-  <string name="projectManager" />
-  <string name="progress" />
-  <date name="prStDate" />
-  
-  <!-- M2M - many emp- may projects -->
-  <many-to-many ref="Employee" name="projEmp" required="true"/>
-  
-  <one-to-many name="projT" ref="ProjectTask"  mappedBy="projTasks"/> 
-  
-  
+	  <string name="name" />
+	  <string name="manager" />
+	  <string name="status" />
+	  <integer name="priority" />
+	  <date name="prStDate" />
+	  <date name="prEndDate"/>
+	    
+	  <!-- M2M - many emp- may projects -->
+	  <many-to-many ref="Employee" name="projEmp" required="true"/>
+	  
+	  <one-to-many name="projT" ref="ProjectTask"  mappedBy="projTasks"/> 
   </entity>
-  </domain-models>
+</domain-models>

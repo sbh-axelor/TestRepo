@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<object-views xmlns="http://axelor.com/xml/ns/object-views"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://axelor.com/xml/ns/object-views
+  http://axelor.com/xml/ns/object-views/object-views_5.4.xsd">
+  
+  <tree name="taskTree" title="Task Tree">
+  	<column name="name" type="string" title="Project Name"/>
+  	<column name="task" type="string" title="Project Task"/>
+  	<column name="subTask" type="string" title="Project Sub-Task"/>
+  	
+  	<node model="com.aop.company.db.Project" >
+  		<field name="name"/>  	
+  	</node>
+  	
+  	<node model="com.aop.company.db.ProjectTask" parent="projTasks">
+  		<field name="name"/>
+  		<field name="task"/>  		
+  	</node>
+  	
+  	<node model="com.aop.company.db.SubTask" parent="subTasks">
+  		<field name="name"/>
+  		<field name="task"/>  	
+  		<field name="subTask" />
+  	</node>
+  </tree>
+</object-views>  
+  
+  
+  

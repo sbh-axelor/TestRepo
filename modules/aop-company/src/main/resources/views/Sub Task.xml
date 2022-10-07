@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<object-views xmlns="http://axelor.com/xml/ns/object-views"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://axelor.com/xml/ns/object-views
+  http://axelor.com/xml/ns/object-views/object-views_5.4.xsd">
+  
+  <grid model="com.aop.company.db.SubTask" title="Project Sub-Tasks" name="project-subtask-grid">
+  	<field name="name" title="Project Name" />
+    <field name="task" title="Project Task" />
+    <field name="subTask" title="Project Sub Task" />
+    <field name="status"  /> 
+    <field name="priority" />
+    <field name="startDate"/>
+    <field name="endDate"/>  
+  </grid>
+  
+  <form model="com.aop.company.db.SubTask" title="Project Sub-Task" name="project-subtask-form">
+  	<field name="name" title="Project Name" />
+    <field name="task" title="Project Task" />
+    <field name="subTask" title="Project Sub Task" />
+    <field name="status"  /> 
+    <field name="priority" />
+    <field name="startDate"/>
+    <field name="endDate"/> 
+    <field name="testStatus"/>  
+  </form>
+  
+  <!-- selection tag is used for kanban view, its also mentioned in the domain at test status tag -->
+  <selection name="test-selection">
+  	<option value="test1" order="1">Planning</option>
+  	<option value="test2" order="2">On-going</option>
+  	<option value="test3" order="3">Testing</option>
+  	<option value="test4" order="4">Deployed</option>
+  </selection>
+  
+  
+  <kanban columnBy="testStatus" model="com.aop.company.db.SubTask" sequenceBy="priority" title="Sub-Task Kanban View" name="project-subTask-kanban">
+  	<field name="name"  />
+    <field name="task" />
+    <field name="subTask" />
+    <field name="startDate"/>
+  	<template>
+  		<![CDATA[	 		
+  		 <div>  		 
+  		 <h3>{{name}}</h4>
+  		 <h4>{{task}}</h4>
+  		 <h4>{{subTask}}</h4>
+  		 <h4>{{startDate}}</h4>
+  		 </div>	  
+  		]]></template>  
+  </kanban>
+</object-views>
+  
+<!-- In kanban view columnBy="testStatus" this (testStatus) is name of the string in subtask domain where (selection="test-selection") is an attribute-->
+  

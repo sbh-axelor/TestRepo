@@ -4,29 +4,28 @@
   xsi:schemaLocation="http://axelor.com/xml/ns/object-views
   http://axelor.com/xml/ns/object-views/object-views_5.4.xsd">
   
-   <grid name="project-task-grid" title="Project Tasks" model="com.aop.company.db.ProjectTask">
-    <field name="name" />
-    <field name="startDate" />
-    <field name="endDate" />
-    <field name="project title" />
-    <field name="priority" />
-    <field name="progress" /> <!-- widget="Progress" -->
+  <grid name="project-task-grid" title="Project Tasks" model="com.aop.company.db.ProjectTask">
+    <field name="name" title="Project"/>
+    <field name="task" title="Project Task" />
+ 	<field name="status" />
+ 	<field name="priority" />
+	<field name="startDate" title="Start Date"/>
+	<field name="endDate" title="End Date"/>
   </grid>
   
   <form name="project-task-form" title="Project Task" model="com.aop.company.db.ProjectTask" onNew="project.task.on.new">
     <panel title="Overview">
-      <field name="name"/>
-      <field name="priority"/>  
-      <field name="project" title="Projects" x-type="many-to-one" x-target="com.aop.company.db.Project" x-target-name="projTasks" />
-      <field name="progress" /> <!-- widget="Progress" --> 
+      <field name="name" title="Project"/>
+      <field name="task" title="Project Task" x-type="many-to-one" x-target="com.aop.company.db.Project" x-target-name="projTasks" />
+      <field name="status"/> 
+      <field name="priority" />
       <field name="startDate"/>
       <field name="endDate"/>
-      <field name="deadlineDate"/>   
   </panel>
 	
 	</form> 
 	
-	
+<!-- 
 	<tree name="project-task-tree" title="Project Tasks Tree">
 		<column name="title" type="string"/>
 		<column name="progress" type="integer" />
@@ -64,5 +63,6 @@
     ]]></template>
   </kanban>
    
+    -->
    
   </object-views>

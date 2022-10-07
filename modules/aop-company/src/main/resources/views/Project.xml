@@ -5,26 +5,29 @@
   http://axelor.com/xml/ns/object-views/object-views_5.4.xsd">
   
   <grid model="com.aop.company.db.Project" title="Project Detail" name="proj-grid">
-	  <field name="projectName" />
-	  <field name="projectManager" />
-	  <field name="prStDate" title="Project Start Date" />
+	  <field name="name" />
+	  <field name="manager" />
+	  <field name="status" />
+	  <field name="priority" />
+	  <field name="prStDate" title="Start Date" />
+	  <field name="prEndDate" title="End Date" />
+	  
   </grid>
   
   <form model="com.aop.company.db.Project" title="Project Form" name="proj-form">
   	<panel>
-  	  <field name="projectName" />
-	  <field name="projectManager" />
+  	  <field name="name" />
+	  <field name="manager" />
+	  <field name="status" />
+	  <field name="priority" />
 	  <field name="prStDate" title="Start Date"/>
+	  <field name="prEndDate" title="End Date" />
+	  
 	 </panel>
 	  
 	  <panel-related field="projEmp" name="projPanel">
 	  	<field name="firstName"  />
 		<field name="lastName" /> 
-	  </panel-related>
-	  
-	  
-  </form>
-  
-  
-  
-  </object-views>
+	  </panel-related>  
+  </form> 
+</object-views>

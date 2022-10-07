@@ -7,26 +7,32 @@
   <module name="company" package="com.aop.company.db" />
 
    <entity name="ProjectTask">
-    <string name="name" title="Task Summary" required="true" />
-    <string name="project" />
-    <string name="notes" multiline="true"/>
-    <string name="state"  /> <!--  selection=project.task.state.selection -->
-    <integer name="priority"/>
-    <datetime name="startDate"/>
-    <datetime name="endDate"/>
-    <date name="deadlineDate"/>
+  
+    <string name="name" title="Project Name" />
+    <string name="task" title="Project Task" />
+    <string name="status"  /> <!--  selection=project.task.state.selection -->
+    <integer name="priority" />
+    <datetime name="startDate" title="Start Date"/>
+    <datetime name="endDate" title="End Date"/>
+    
+    
+     <!--  <string name="name" title="Task Summary" required="true" />  -->
+    <!--  
     <integer name="progress">
 	    <![CDATA[
 	      double result = 0.0, duration = 0.0;
 	    result = Math.min(100.0, ((result / duration) * 100));
 	    return (int) Math.round(result);
 	    ]]>
-    </integer>
+    </integer> -->
   
  <!--  	<many-to-one ref="Project" name="projTasks"/> -->
  	
  	<many-to-one  name="projTasks" ref="com.aop.company.db.Project"/> 
  	
+ 	
+ 	
+ 	<!-- 
  	<datetime name="plannedStartDate"/>
     <decimal name="plannedDuration"/>
     <decimal name="plannedProgress"/>
@@ -48,16 +54,9 @@
       table="PROJECT_TASK_S2F"
       column="from_task_id"
       column2="to_task_id" />
+      
+     -->
  	
-  </entity>
+</entity>
 
 </domain-models>
-
-
-<!-- <integer name="progress">
-	    <![CDATA[
-	      double result = 0.0, duration = 0.0;
-	    result = Math.min(100.0, ((result / duration) * 100));
-	    return (int) Math.round(result);
-	    ]]>
-    </integer>  -->
