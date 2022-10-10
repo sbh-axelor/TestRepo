@@ -4,12 +4,16 @@
   xsi:schemaLocation="http://axelor.com/xml/ns/object-views
   http://axelor.com/xml/ns/object-views/object-views_5.4.xsd">
   
+  <!-- Chart view -->
   <grid model="com.aop.company.db.Salary" title="Salary Detail" name="salary-grid">
   		<field name="name" title="Employee Name" />
 	  	<field name="designation" title= "Designation" />
 	  	<field name="department" title = "Department"/>
 	  	<field name="basic" title="Basic Salary" />
-	  	<field name="inhand" title="Inhand Salary" />  
+	  	<field name="gross" title="Gross Salary" />
+	  	<field name="leaveDays" title="Leave Days" />
+	  	<field name="deduction" />
+	  	<field name="inhand" title="Inhand Salary" />	
   </grid>
   
   <form model="com.aop.company.db.Salary" title="Salary Form" name="salary-form">
@@ -17,7 +21,11 @@
 	  	<field name="designation" title= "Designation" />
 	  	<field name="department" title = "Department"/>
 	  	<field name="basic" title="Basic Salary" />
-	  	<field name="inhand" title="Inhand Salary" />  
+	  	<field name="gross" title="Gross Salary" />
+	  	<field name="leaveDays" title="Leave Days" />
+	  	<field name="deduction" />
+	  	<field name="inhand" title="Inhand Salary" />	  		
   </form>
   
-  </object-views>
+ 
+</object-views>

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<object-views xmlns="http://axelor.com/xml/ns/object-views"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://axelor.com/xml/ns/object-views
+  http://axelor.com/xml/ns/object-views/object-views_5.4.xsd">
+
+
+	<chart name="chart.test.chart" title="Test Chart">
+		<dataset type="sql"> 
+			  <![CDATA[
+select count(cemp.id) as _ids, cemp.emp_full_name as fullName from company_employee as cemp group by cemp.emp_full_name
+			  ]]>
+		</dataset>
+		<category key="_ids" type="number" title="Customer" />
+		<series key="fullName" type="bar" title="Invoice" />
+	</chart>
+
+
+</object-views>

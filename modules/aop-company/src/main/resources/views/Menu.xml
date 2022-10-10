@@ -9,6 +9,7 @@
 	<menuitem title="Employees" name="menu-comp-emp" parent="menu-comp" action="emp.click" />
 	<menuitem title="Departments" name=" menu-comp-dept" parent="menu-comp" action="dept.click" />
 	<menuitem title="Salary" name="menu-comp-salary" parent="menu-comp" action="salary.click"/>
+	<menuitem title="Leaves" name="menu-comp-leaves" parent="menu-comp" action="leaves.click"/>
 	<menuitem title="Project" name="menu-comp-project" parent="menu-comp"/>
 	<menuitem title="Project Details" name="menu-comp-project-detail" parent="menu-comp-project" action="proj.click" />
 	<menuitem title="Tasks" name="menu-comp-project-task" parent="menu-comp-project" action="projectTask.click"/>
@@ -24,6 +25,11 @@
 	</action-view>
 
 	<action-view name="dept.click" title="Departments" model="com.aop.company.db.Department">
+		<view type="grid" name="dept-grid" />
+		<view type="form" name="dept-form" />
+	</action-view>
+	
+	<action-view name="leaves.click" title="Leaves" model="com.aop.company.db.Leaves">
 		<view type="grid" name="dept-grid" />
 		<view type="form" name="dept-form" />
 	</action-view>
@@ -87,14 +93,15 @@
 		<view type="form" name="continent-form"/>
 	</action-view>
 	
-<!-- CARD VIEW 
-	<menuitem title="Cards" name="menu-id-card" />
-		<menuitem title="Card view" name="menu-id-card-test" parent="menu-id-card" action="card.all"/>
-		
-	<action-view name="card.all" model="com.aop.company.db.Employee" title="">
-		<view type="cards" name="id-card"/>
-		<view type="form" name="emp-form"/>
-		<view type="grid" name="emp-grid"/>
-	</action-view> -->
+	<menuitem title="Dashbaord" name="menu-dashboard" action="test.dashboard.all"/>
+	<action-view name="test.dashboard.all" title="Dashboard">
+		<view type="dashboard" name="test-dashboard"/>
+	</action-view>
+	<dashboard name="test-dashboard" title="Dashboard">
+		<dashlet action="chart:chart.test.chart"/>
+	</dashboard>
+	
+	
+	
 	
 </object-views>

@@ -15,15 +15,19 @@
 	  </string>
 	  
 	  <string name="email" required="true" unique="true" max="100" />
-  	  <string name="phone" max="20" massUpdate="true"/>
-	 
+  	  <string name="phone" max="20" massUpdate="true"/> 
 	  <string name="designation" required="true"/>
-	  <!--<index columns="firstName,lastName" name="idx_empFullNames"/>   -->
-	   
-	  <!-- one2many many emp one dept  - bidirectional-->
-	 <many-to-one ref="Department" name="empDept" />
+	  <integer name="gross" />
+	  <integer name="inHand"/>
 	 
-	  <!-- M2M - many emp- many projects -->
-	  <many-to-many ref="Project" name="empProj" mappedBy="projEmp"/>
+	  	<!--<index columns="firstName,lastName" name="idx_empFullNames"/>   -->
+	  	<!-- one2many many emp one dept  - bidirectional-->
+	 	<many-to-one ref="Department" name="empDept" />
+	 
+	  		<!-- M2M - many emp- many projects -->
+	  		<many-to-many ref="Project" name="empProj" mappedBy="projEmp"/>
+	  		
+	  			<!--  O2M ONE EMP MANY LEAVE -->
+	  			<one-to-many ref="com.aop.company.db.Leaves" name="leavesList" mappedBy="leaves"/>
   </entity>
   </domain-models>

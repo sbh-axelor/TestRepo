@@ -10,7 +10,10 @@
 	  	<string name="name" title="Employee Name" />
 	  	<string name="designation" title= "Designation" />
 	  	<string name="department" title = "Department"/>
-	  	<string name="basic" title="Basic Salary" />
+	  	<string name="gross" title="Gross Salary" />
+	  	<string name="leaveDays" title="Leave Days" />
+	  	<string name="deduction" />
 	  	<string name="inhand" title="Inhand Salary" />	
+	  
 	  </entity>
 	</domain-models>  
