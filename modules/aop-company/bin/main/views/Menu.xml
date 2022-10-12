@@ -93,12 +93,15 @@
 		<view type="form" name="continent-form"/>
 	</action-view>
 	
+<!-- for  chart view -->	
+	
 	<menuitem title="Dashbaord" name="menu-dashboard" action="test.dashboard.all"/>
 	<action-view name="test.dashboard.all" title="Dashboard">
 		<view type="dashboard" name="test-dashboard"/>
 	</action-view>
 	<dashboard name="test-dashboard" title="Dashboard">
 		<dashlet action="chart:chart.test.chart"/>
+		<dashlet action="chart:chart.test.pie"/>
 	</dashboard>
 	
 	

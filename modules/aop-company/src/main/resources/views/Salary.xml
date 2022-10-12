@@ -5,8 +5,24 @@
   http://axelor.com/xml/ns/object-views/object-views_5.4.xsd">
   
   <!-- Chart view -->
+  
+  <form name="salary-form" title="Salary Form" model="com.aop.company.db.Salary">
+	 <panel name="detail-panel" title="Employee Detail">
+		  <field name="name" title="Employee Name" nameColumn="true" x-target-name="empFullName" x-target="com.aop.company.db.Employee" x-type="one-to-one"/>
+		  <field name="designation" title="Designation" x-targe-name="designation" x-target="com.aop.company.db.Employee"/>
+		  <field name="department" title="Department"/>
+	 </panel>
+	 <panel name="salary-panel" title="Salary Detail" >
+		  <field name="basic" title="Basic Salary"/>
+		  <field name="gross" title="Gross Salary"/>
+		  <field name="leaveDays" title="Leave Days"/>
+		  <field name="deduction"/>
+		  <field name="inhand" title="Inhand Salary"/>
+	 </panel>   
+  </form>
+  
   <grid model="com.aop.company.db.Salary" title="Salary Detail" name="salary-grid">
-  		<field name="name" title="Employee Name" />
+  		<field name="name" title="Employee Name"/>
 	  	<field name="designation" title= "Designation" />
 	  	<field name="department" title = "Department"/>
 	  	<field name="basic" title="Basic Salary" />
@@ -16,16 +32,7 @@
 	  	<field name="inhand" title="Inhand Salary" />	
   </grid>
   
-  <form model="com.aop.company.db.Salary" title="Salary Form" name="salary-form">
-  		<field name="name" title="Employee Name" />
-	  	<field name="designation" title= "Designation" />
-	  	<field name="department" title = "Department"/>
-	  	<field name="basic" title="Basic Salary" />
-	  	<field name="gross" title="Gross Salary" />
-	  	<field name="leaveDays" title="Leave Days" />
-	  	<field name="deduction" />
-	  	<field name="inhand" title="Inhand Salary" />	  		
-  </form>
+
   
  
 </object-views>

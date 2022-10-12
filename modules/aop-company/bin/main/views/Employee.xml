@@ -4,56 +4,56 @@
   xsi:schemaLocation="http://axelor.com/xml/ns/object-views
   http://axelor.com/xml/ns/object-views/object-views_5.4.xsd">
    
-  <grid model="com.aop.company.db.Employee" title="Employee Detail" name="emp-grid">
-	  <field name="empFullName" />
-	  <field name="firstName" />
-	  <field name="lastName" />
-	  <field name="designation"/>
-	  <field name="email" />
-	  <field name="phone" />
-	  <field name="grossSalary"/>
-  </grid>
   
-  <form model="com.aop.company.db.Employee" title="Employees Form" name="emp-form">
- 	  <panel name="empPanel" title="Employee Overview" colSpan="8"> 
-     	  <field name="empFullName" readonly="false" >
-     	  	 <editor>
-	          <field name="firstName" colSpan="3"/>
-	          <field name="lastName" colSpan="4"/>
-			</editor> 
-		  </field>  
-		  <field name="designation" canNew="New" />
-		  <field name="email">
-		      <viewer><![CDATA[ 
-			      <a href="mailto:{{record.email}}">{{record.email}}</a>
-			  ]]></viewer>
-		  </field>
-		  <field name="phone">
-			  <viewer><![CDATA[
-				      <a href="tel:{{record.phone}}">{{record.phone}}</a>
-			   ]]></viewer>
-   		 </field>
-		  <!-- view of m2o  -->
-		  <!-- <field name="" x-type="relationType" x-target="targeted view-model" x-target-name="target field name" -->
-		  <field name="empDept" 
-		  		 title="Department" 
-		  		 x-type="many-to-one" 
-		  		 x-target="com.aop.company.db.Department"  
-		  		 x-target-name="departmentName"/>  
-	  
-	  <panel name="salary-panel">
-		  <field name="gross"/>
-		  <field name="inHand"/>
+  
+  	<form name="emp-form" title="Employees Form" model="com.aop.company.db.Employee" width="large">
+	  <panel name="nameDetail-panel" title="Employee Overview">
+	    <field name="empFullName" readonly="false">
+	      <editor>
+	        <field name="firstName"/>
+	        <field name="lastName"/>
+	      </editor>
+	    </field>
 	  </panel>
 	  
-	  <panel-related field="empProj" name="empPanel">
-	  		<field name="projectName" />
-			<field name="projectManager" />
-			<field name="prStDate" title="Start Date"/>
-	  </panel-related> 
-	 </panel> 
+	  <panel name="contactDetail-panel">
+	    <field name="email">
+	      <viewer><![CDATA[ 
+	      	<a href="mailto:{{record.email}}">{{record.email}}</a>
+	  	  ]]></viewer>
+	    </field>
+	    <field name="phone">
+	      <viewer><![CDATA[
+		  	<a href="tel:{{record.phone}}">{{record.phone}}</a>
+	      ]]></viewer>
+	    </field>
+	  </panel>
 	  
-  </form>
+	  <panel name="deptmentDetail-panel">
+	    <field name="designation"/>
+	    <field name="empDept" title="Department" x-target-name="departmentName" x-target="com.aop.company.db.Department" x-type="many-to-one"/>
+	  </panel>
+	  
+	  <panel name="salary-panel">
+	    <field name="gross"/>
+	    <field name="inHand"/>
+	  </panel>
+	    
+	  <panel-related name="empPanel" field="empProj">
+	    <field name="projectName"/>
+	    <field name="projectManager"/>
+	    <field name="prStDate" title="Start Date"/>
+	  </panel-related>
+	</form>
+	
+	<grid model="com.aop.company.db.Employee" title="Employee Detail" name="emp-grid">
+	  <field name="empFullName" />
+	  <field name="designation" />
+	  <field name="empDept" title="Department"/>
+	  <field name="email" />
+	  <field name="phone" />
+	  <field name="gross" title="Gross Salary"/>
+  	</grid>
   
    <cards name="emp-card" model="com.aop.company.db.Employee" title="Employee Id Card">
   	<field name="empFullName" />

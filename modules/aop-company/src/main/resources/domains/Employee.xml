@@ -21,7 +21,7 @@
 	  <integer name="inHand"/>
 	 
 	  	<!--<index columns="firstName,lastName" name="idx_empFullNames"/>   -->
-	  	<!-- one2many many emp one dept  - bidirectional-->
+	  	<!-- m2o emp one dept  - bidirectional-->
 	 	<many-to-one ref="Department" name="empDept" />
 	 
 	  		<!-- M2M - many emp- many projects -->
@@ -29,5 +29,8 @@
 	  		
 	  			<!--  O2M ONE EMP MANY LEAVE -->
 	  			<one-to-many ref="com.aop.company.db.Leaves" name="leavesList" mappedBy="leaves"/>
+	  			
+	  				<!-- O2O one employee - one salary -->
+	  				<one-to-one ref="com.aop.company.db.Salary" name="employee" /> 
   </entity>
   </domain-models>

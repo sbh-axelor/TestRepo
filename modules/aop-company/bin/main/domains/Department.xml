@@ -8,7 +8,7 @@
   
   <entity name="Department">
   
-  <string name="departmentName" />
+  <string name="departmentName" namecolumn="true"/> <!-- if value of name attribute is anything other than "name", then use nameColumn="true" -->
   <string name="departmentManager" />
   
   <!-- one2many one dept many emp - bidirectional -->

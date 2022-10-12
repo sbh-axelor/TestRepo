@@ -7,7 +7,7 @@
   <module package="com.aop.company.db" name="company"/>
   
 	  <entity name="Salary">
-	  	<string name="name" title="Employee Name" />
+	  	<string name="name" title="Employee Name"  />
 	  	<string name="designation" title= "Designation" />
 	  	<string name="department" title = "Department"/>
 	  	<string name="gross" title="Gross Salary" />
@@ -15,5 +15,7 @@
 	  	<string name="deduction" />
 	  	<string name="inhand" title="Inhand Salary" />	
 	  
+	  <!-- mapping - O2O one emp-one salary -->
+	  		<one-to-one ref="com.aop.company.db.Employee" name="salary" mappedBy="employee" /> 
 	  </entity>
 	</domain-models>  

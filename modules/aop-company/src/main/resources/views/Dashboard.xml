@@ -4,16 +4,40 @@
 	xsi:schemaLocation="http://axelor.com/xml/ns/object-views
   http://axelor.com/xml/ns/object-views/object-views_5.4.xsd">
 
-
+<!-- for chart view -->
+<!--  select count(cemp.id) as _ids, cemp.emp_full_name as fullName from company_employee as cemp group by cemp.emp_full_name  -->
+	
 	<chart name="chart.test.chart" title="Test Chart">
-		<dataset type="sql"> 
-			  <![CDATA[
-select count(cemp.id) as _ids, cemp.emp_full_name as fullName from company_employee as cemp group by cemp.emp_full_name
-			  ]]>
-		</dataset>
-		<category key="_ids" type="number" title="Customer" />
-		<series key="fullName" type="bar" title="Invoice" />
+		  <dataset type="sql"><![CDATA[ 
+				select 
+					sum(cemp.gross) as emp_salary, 
+					cemp.designation as emp_designation 
+				from 
+					company_employee as cemp 
+				where 
+					cemp.gross <=20000 
+				group by 
+					cemp.designation
+		  ]]></dataset>
+		  <category key="emp_designation" type="text" title="Designation"/>
+		  <series key="emp_salary" type="bar" title="Salary"/>
 	</chart>
-
-
+	
+	<chart name="chart.test.pie" title="Pie Chart">
+	  <dataset type="sql"><![CDATA[
+	
+			select sum(cemp.gross) as emp_salary, cemp.emp_dept as emp_department from company_employee as cemp group by cemp.emp_dept
+	 ]]></dataset>
+	  <category key="emp_department" type="text" title="Department"/>
+	  <series key="emp_salary" type="pie" title="Salary" />
+	 <!--   <config name="department-pie" width="10" height="15" percentage="true" value="black"  /> -->
+	</chart>
+		
+	<!--  <dashboard name="chart" title="Charts">
+		<dashlet action="emp-grid" />
+		<dashlet action="chart:chart.test.chart"/> 
+		
+	</dashboard> -->
 </object-views>
+
+
