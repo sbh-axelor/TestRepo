@@ -7,7 +7,7 @@
 <!-- for chart view -->
 <!--  select count(cemp.id) as _ids, cemp.emp_full_name as fullName from company_employee as cemp group by cemp.emp_full_name  -->
 	
-	<chart name="chart.test.chart" title="Test Chart">
+	<chart name="chart.test.bar" title="Bar Chart" stacked="true">
 		  <dataset type="sql"><![CDATA[ 
 				select 
 					sum(cemp.gross) as emp_salary, 
@@ -24,20 +24,104 @@
 	</chart>
 	
 	<chart name="chart.test.pie" title="Pie Chart">
-	  <dataset type="sql"><![CDATA[
-	
-			select sum(cemp.gross) as emp_salary, cemp.emp_dept as emp_department from company_employee as cemp group by cemp.emp_dept
+	  <dataset type="sql"><![CDATA[	
+			select 
+				  sum(cemp.gross) as emp_salary,
+				  cemp.emp_dept as emp_department 
+			from 
+				  company_employee as cemp 
+			group by 
+				  cemp.emp_dept
 	 ]]></dataset>
 	  <category key="emp_department" type="text" title="Department"/>
 	  <series key="emp_salary" type="pie" title="Salary" />
-	 <!--   <config name="department-pie" width="10" height="15" percentage="true" value="black"  /> -->
+	  <!-- <config name="department-pie" width="10" height="15" percentage="true" value="black"  />  -->
 	</chart>
-		
-	<!--  <dashboard name="chart" title="Charts">
-		<dashlet action="emp-grid" />
-		<dashlet action="chart:chart.test.chart"/> 
-		
-	</dashboard> -->
+	
+	<!-- hbar- horizontal bar- graph whose bars are horizontal. 
+	The data categories are shown on the vertical axis and 
+	the data values/series are shown on the horizontal axis.  -->
+	<chart name="chart.test.hbar" title="HBar Chart">
+		  <dataset type="sql"><![CDATA[ 
+			select 
+				sum(cemp.gross) as emp_salary, 
+				cemp.emp_dept as emp_department 
+			from 
+				company_employee as cemp 
+			group by emp_dept
+		  ]]></dataset>
+		  <category key="emp_department" type="text" title="Department"/>
+		  <series key="emp_salary" groupBy="emp_department" type="hbar" title="Salary"/>
+	</chart>
+	
+<!-- Line chart -->
+	<chart name="chart.test.line" title="Line Chart">
+		  <dataset type="sql"><![CDATA[ 
+				select cemp.gross as emp_salary, count(cemp.designation) as emp_designation from company_employee as cemp where cemp.gross <=20000 group by cemp.gross
+		  ]]></dataset>
+		  <category key="emp_designation" type="text" title="Designation"/>
+		  <series key="emp_salary" type="line" title="Salary"/>
+	</chart>
+	
+<!-- donut chart  -->
+	<chart name="chart.test.donut" title="Donut Chart">
+		  <dataset type="sql"><![CDATA[ 
+				select sum(cemp.gross) as emp_salary,
+					   cemp.designation as emp_designation 
+				from company_employee as cemp 
+				where cemp.gross <=20000 
+				group by cemp.designation
+  		  ]]></dataset>
+	  <category key="emp_designation" type="text" title="Designation"/>
+	  <series key="emp_salary" type="donut" title="Salary"/>
+	</chart>
+	
+<!-- scatter chart  -->
+	<chart name="chart.test.scatter" title="Scatter Chart">
+		  <dataset type="sql"><![CDATA[ 
+				select sum(cemp.gross) as emp_salary,
+					   cemp.designation as emp_designation 
+				from company_employee as cemp 
+				where cemp.gross <=20000 
+				group by cemp.designation
+  		  ]]></dataset>
+	  <category key="emp_designation" type="text" title="Designation"/>
+	  <series key="emp_salary" type="scatter" title="Salary"/>
+	</chart>
+	
+<!-- gauge chart  -->
+	<chart name="chart.test.gauge" title="Gauge Chart">
+		  <dataset type="sql"><![CDATA[ 
+				select cemp.gross as emp_salary, count(cemp.designation) as emp_designation from company_employee as cemp where cemp.gross <=20000 group by cemp.gross
+  		  ]]></dataset>
+	  <category key="emp_designation" type="text" title="Designation"/>
+	  <series key="emp_salary" type="gauge" title="Salary"/>
+	</chart>
+	
+<!-- area chart  -->
+	<chart name="chart.test.area" title="Area Chart">
+		  <dataset type="sql"><![CDATA[ 
+				select cemp.gross as emp_salary, count(cemp.designation) as emp_designation from company_employee as cemp where cemp.gross <=20000 group by cemp.gross
+  		  ]]></dataset>
+	  <category key="emp_designation" type="text" title="Designation"/>
+	  <series key="emp_salary" type="area" title="Salary"/>
+	</chart>
+	
+<!-- radar chart  -->
+	<chart name="chart.test.radar" title="Radar Chart">
+		  <dataset type="sql"><![CDATA[ 
+				select sum(cemp.gross) as emp_salary,
+					   cemp.designation as emp_designation 
+				from company_employee as cemp 
+				where cemp.gross <=20000 
+				group by cemp.designation
+  		  ]]></dataset>
+	  <category key="emp_designation" type="text" title="Designation"/>
+	  <series key="emp_salary" type="radar" title="Salary"/>
+	</chart>
+	
+
+		  
 </object-views>
 
 

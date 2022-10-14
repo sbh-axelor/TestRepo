@@ -93,6 +93,23 @@
 		<view type="form" name="continent-form"/>
 	</action-view>
 	
+<!-- Gantt view -->
+	<menuitem name="gantt-item" parent="proj.click" title="Project Task Gantt" action="projectTask.gantt" />
+	
+	<action-view name="projectTask.gantt" title="Project Task Gantt" model="com.aop.company.db.ProjectTask">
+		<view type="gantt" name="projectTask-gantt"/>
+	</action-view>
+	
+	<menuitem name="dashboard-item"
+            parent="proj.click"
+            title="Project Task Dashboard"
+            action="projectTask.dashboard"/>
+
+    <action-view name="projectTask.dashboard"
+               title="Project Task Dashboard">
+    	<view type="dashboard" name="projectTask-dashboard"/>  
+   </action-view>
+	
 <!-- for  chart view -->	
 	
 	<menuitem title="Dashbaord" name="menu-dashboard" action="test.dashboard.all"/>
@@ -100,8 +117,16 @@
 		<view type="dashboard" name="test-dashboard"/>
 	</action-view>
 	<dashboard name="test-dashboard" title="Dashboard">
-		<dashlet action="chart:chart.test.chart"/>
+		<dashlet action="chart:chart.test.bar"/>
 		<dashlet action="chart:chart.test.pie"/>
+		<dashlet action="chart:chart.test.hbar" />
+		<dashlet action="chart:chart.test.line"/>
+		<dashlet action="chart:chart.test.donut"/>
+		<dashlet action="chart:chart.test.scatter"/>
+		<dashlet action="chart:chart.test.gauge"/>
+		<dashlet action="chart:chart.test.area"/>
+		<dashlet action="chart:chart.test.radar"/>
+		
 	</dashboard>
 	
 	

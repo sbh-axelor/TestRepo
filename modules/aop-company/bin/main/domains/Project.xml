@@ -13,10 +13,16 @@
 	  <integer name="priority" />
 	  <date name="prStDate" />
 	  <date name="prEndDate"/>
+	  <string name="notes" multiline="true" />
+	  <string name="summary" />
 	    
 	  <!-- M2M - many emp- may projects -->
-	  <many-to-many ref="Employee" name="projEmp" required="true"/>
+	  <many-to-many name="projEmp" ref="Employee"  required="true"/>
 	  
-	  <one-to-many name="projT" ref="ProjectTask"  mappedBy="projTasks"/> 
+		  <!-- O2M - one project - many subproject -->	  
+		  <one-to-many name="projT" ref="ProjectTask"  mappedBy="projTasks"/> 
+		  
+		  	<!-- M2O - many project one parent (this is done to show the main project also as its sub project)-->
+		  	<many-to-one name="parent" ref="com.aop.company.db.Project"  />
   </entity>
 </domain-models>

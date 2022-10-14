@@ -9,25 +9,46 @@
 	  <field name="manager" />
 	  <field name="status" />
 	  <field name="priority" />
+	  <field name="parent" />
 	  <field name="prStDate" title="Start Date" />
 	  <field name="prEndDate" title="End Date" />
 	  
   </grid>
   
   <form model="com.aop.company.db.Project" title="Project Form" name="proj-form">
-  	<panel>
+  	<panel title="Overview">
   	  <field name="name" />
 	  <field name="manager" />
 	  <field name="status" />
 	  <field name="priority" />
+	  <field name="parent"/>
+	  <field name="projEmp" widget="TagSelect" canEdit="false" canNew="false" bgColor="yellow" />
 	  <field name="prStDate" title="Start Date"/>
-	  <field name="prEndDate" title="End Date" />
-	  
-	 </panel>
-	  
-	  <panel-related field="projEmp" name="projPanel">
-	  	<field name="firstName"  />
-		<field name="lastName" /> 
-	  </panel-related>  
+	  <field name="prEndDate" title="End Date" />	  
+	</panel>
+	 
+	  <panel-tabs> 
+		  <!-- <panel-related field="projEmp" name="projPanel" editable="true"/>
+		  	<field name="firstName"  />
+			<field name="lastName" /> 
+		  </panel-related>  -->
+		  
+		  <panel-related field="projT" editable="true">
+		  	<field name="name" />
+	        <field name="createDate" />
+	        <field name="startDate" />
+	        <field name="endDate" />
+	        <field name="student" />
+	        <field name="priority" /> 
+		  </panel-related>
+		  	 
+	  	  <panel name = "note" title="Project Notes" showFrame="false" showTitle="true"  >
+	  		<field name="notes" title="Description" />
+	  	  </panel>
+	  	  
+	  	  <panel name = "summary" title="Project Summary" showFrame="true" showTitle="true"  >
+	  		<field name="Summary" />  
+	  	  </panel>
+	  </panel-tabs>	  
   </form> 
 </object-views>

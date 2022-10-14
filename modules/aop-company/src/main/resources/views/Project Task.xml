@@ -9,8 +9,11 @@
     <field name="task" title="Project Task" />
  	<field name="status" />
  	<field name="priority" />
+ 	<field name="employee" />
+ 	<field name="project" />
 	<field name="startDate" title="Start Date"/>
 	<field name="endDate" title="End Date"/>
+	<field name="progress" widget="Progress"/>
   </grid>
   
   <form name="project-task-form" title="Project Task" model="com.aop.company.db.ProjectTask" onNew="project.task.on.new">
@@ -21,48 +24,48 @@
       <field name="priority" />
       <field name="startDate"/>
       <field name="endDate"/>
+      <field name="project"/>
+      <field name="employee"/>
+      <field name="parentTask"/>
+      <field name="sequence"/>
+      <field name="progress" widget="Progress"/>
   </panel>
+  
+  <panel-tabs>
+  	  <panel title="Notes">
+        <field name="notes" showTitle="false" colSpan="12"/>
+      </panel>
+      
+      <panel title="Planning">
+        <field name="plannedStartDate"/>
+        <field name="plannedDuration"/>
+        <field name="plannedProgress"/>
+        <spacer/>
+        <panel title="Linked project tasks" colSpan="12">
+          <field name="finishToStartTaskSet" widget="TagSelect" />
+          <field name="startToStartTaskSet" widget="TagSelect" />
+          <field name="finishToFinishTaskSet" widget="TagSelect" />
+          <field name="startToFinishTaskSet" widget="TagSelect" />
+        </panel>
+      </panel>
+  </panel-tabs>
+</form> 
+
+
+	<gantt name="projectTask-gantt" title="Task Planning" model="com.aop.company.db.ProjectTask"
+		  taskStart="plannedStartDate"
+		  taskDuration="plannedDuration"
+		  taskParent="parentTask"
+		  taskSequence="sequence"
+		  taskProgress="plannedProgress"
+		  x-finish-to-start="finishToStartTaskSet"
+		  x-start-to-start="startToStartTaskSet"
+		  x-finish-to-finish="finishToFinishTaskSet"
+		  x-start-to-finish="startToFinishaskSet">
+		  <field name="name" />
+		  <field name="project" />
+		  <field name="employee" />
+	</gantt>
 	
-	</form> 
-	
-<!-- 
-	<tree name="project-task-tree" title="Project Tasks Tree">
-		<column name="title" type="string"/>
-		<column name="progress" type="integer" />
-		
-		<node model="com.aop.company.db.Project" onClick="projects.task.open.project">
-			<field name="name"/>
-		</node>
-		
-		<node model="com.aop.company.db.ProjectTask" parent="projTasks" draggable="true" >
-			<field name="name" as="title"/>
-			<field name="progress" as="progress"/>
-		</node>
-	
-	</tree> 
-	
-	<kanban name="project-task-kanban" title="Project Tasks" model="com.aop.company.db.ProjectTask"
-    columnBy="state" sequenceBy="priority" onNew="project.task.kanban.on.new" limit="10">
-    <field name="name"/>
-    <field name="notes" />
-    <field name="progress"/>
-    <field name="startDate"/>
-    <field name="endDate"/>
-    <field name="user"/>
-    <hilite color="danger" if="progress == 0" />
-    <hilite color="success" if="progress == 100" />
-    <hilite color="info" if="progress >= 50" />
-    <hilite color="warning" if="progress > 0" />
-    <template><![CDATA[
-    <h4>{{name}}</h4>
-    <img ng-if="user" ng-src="{{$image('user', 'image')}}">
-    <div class="card-body">{{notes}}</div>
-    <div class="card-footer">
-      <i class='fa fa-clock-o'></i> <span ng-if="startDate">{{$moment(startDate).format('LLL')}}</span>
-    </div>
-    ]]></template>
-  </kanban>
    
-    -->
-   
-  </object-views>
+</object-views>
