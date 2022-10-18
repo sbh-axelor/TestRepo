@@ -5,27 +5,26 @@
   http://axelor.com/xml/ns/object-views/object-views_5.4.xsd">
   
   <grid name="project-task-grid" title="Project Tasks" model="com.aop.company.db.ProjectTask">
-    <field name="name" title="Project"/>
+    <field name="name" title="Task Name"/>
     <field name="task" title="Project Task" />
  	<field name="status" />
  	<field name="priority" />
- 	<field name="employee" />
- 	<field name="project" />
+
 	<field name="startDate" title="Start Date"/>
 	<field name="endDate" title="End Date"/>
 	<field name="progress" widget="Progress"/>
   </grid>
   
-  <form name="project-task-form" title="Project Task" model="com.aop.company.db.ProjectTask" onNew="project.task.on.new">
+  <form name="project-task-form" title="Project Task" model="com.aop.company.db.ProjectTask">
     <panel title="Overview">
-      <field name="name" title="Project"/>
-      <field name="task" title="Project Task" x-type="many-to-one" x-target="com.aop.company.db.Project" x-target-name="projTasks" />
+      <field name="name" title="Task Name"/>
+      <field name="task" title="Project Task"  />
       <field name="status"/> 
       <field name="priority" />
       <field name="startDate"/>
       <field name="endDate"/>
-      <field name="project"/>
-      <field name="employee"/>
+      <field name="projs" title="Parent Project" x-type="many-to-one" x-target="com.aop.company.db.Project" x-target-name="name" nameColumn="True" />
+     <!--  <field name="employee"/>  -->
       <field name="parentTask"/>
       <field name="sequence"/>
       <field name="progress" widget="Progress"/>
@@ -61,7 +60,7 @@
 		  x-finish-to-start="finishToStartTaskSet"
 		  x-start-to-start="startToStartTaskSet"
 		  x-finish-to-finish="finishToFinishTaskSet"
-		  x-start-to-finish="startToFinishaskSet">
+		  x-start-to-finish="startToFinishTaskSet">
 		  <field name="name" />
 		  <field name="project" />
 		  <field name="employee" />

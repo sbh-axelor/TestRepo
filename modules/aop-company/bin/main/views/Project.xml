@@ -22,7 +22,7 @@
 	  <field name="status" />
 	  <field name="priority" />
 	  <field name="parent"/>
-	  <field name="projEmp" widget="TagSelect" canEdit="false" canNew="false" bgColor="yellow" />
+	<!--   <field name="projEmp" widget="TagSelect" canEdit="false" canNew="false" bgColor="yellow" />  -->
 	  <field name="prStDate" title="Start Date"/>
 	  <field name="prEndDate" title="End Date" />	  
 	</panel>
@@ -40,7 +40,7 @@
 	        <field name="endDate" />
 	        <field name="student" />
 	        <field name="priority" /> 
-		  </panel-related>
+		  </panel-related> 
 		  	 
 	  	  <panel name = "note" title="Project Notes" showFrame="false" showTitle="true"  >
 	  		<field name="notes" title="Description" />

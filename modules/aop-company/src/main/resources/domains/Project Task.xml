@@ -7,25 +7,24 @@
   <module name="company" package="com.aop.company.db" />
 
    <entity name="ProjectTask">
-	    <string name="name" title="Project Name" />
-	    <string name="task" title="Project Task" />
+	    <string name="name" />
+	    <string name="task"  />
 	    <string name="status"  /> <!--  selection=project.task.state.selection -->
-	    <integer name="priority" />
+	   <integer name="priority" /> 
 	    <datetime name="startDate" title="Start Date"/>
 	    <datetime name="endDate" title="End Date"/>
-	    <integer name="progress" />
+	   <integer name="progress" />
 	    <string name="notes" multiline="true"/>
 	    
-	    <many-to-one name="project" ref="Project" />
-	    <many-to-one name="employee" ref="com.aop.company.db.Employee" column="Employee_Detail" required="true" /> 
-	 	<many-to-one  name="projTasks" ref="com.aop.company.db.Project"/> 
+	    <many-to-one name="employee" ref="com.aop.company.db.Employee" required="true" /> 
+	 	<many-to-one name="projs" ref="com.aop.company.db.Project"/>
 	 	 
 	 	<datetime name="plannedStartDate"/>
 	    <decimal name="plannedDuration"/>
 	    <decimal name="plannedProgress"/>
 	    
 	    <many-to-one name="parentTask" ref="ProjectTask" title="Parent task" />
-	    <integer name="sequence" title="Sequence" />
+	    <string name="sequence" title="Sequence" />
 	    <many-to-many name="finishToStartTaskSet" ref="ProjectTask" title="Tasks to finish before start"
 	      table="PROJECT_TASK_F2S"
 	      column="from_task_id"
