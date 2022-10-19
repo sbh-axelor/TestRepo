@@ -16,7 +16,7 @@
     <datetime name="endDate"/>
     <string name="testStatus" selection="test-selection"/>
     
-   <!--  
-    <many-to-one ref="com.aop.company.db.ProjectTask" name="subTasks" />  -->  
+    
+    <many-to-one ref="com.aop.company.db.ProjectTask" name="subTasks" />
   </entity>
   </domain-models>

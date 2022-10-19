@@ -9,14 +9,14 @@
    <entity name="ProjectTask">
 	    <string name="name" />
 	    <string name="task"  />
-	    <string name="status"  /> <!--  selection=project.task.state.selection -->
+	    <string name="status" selection="project.task.status.selection" /> <!--  selection=project.task.state.selection -->
 	   <integer name="priority" /> 
 	    <datetime name="startDate" title="Start Date"/>
 	    <datetime name="endDate" title="End Date"/>
 	   <integer name="progress" />
 	    <string name="notes" multiline="true"/>
 	    
-	    <many-to-one name="employee" ref="com.aop.company.db.Employee" required="true" /> 
+	    <many-to-one name="employee" ref="com.aop.company.db.Employee" /> 
 	 	<many-to-one name="projs" ref="com.aop.company.db.Project"/>
 	 	 
 	 	<datetime name="plannedStartDate"/>

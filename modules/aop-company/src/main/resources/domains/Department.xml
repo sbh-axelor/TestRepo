@@ -5,7 +5,6 @@
   http://axelor.com/xml/ns/domain-models/domain-models_5.4.xsd">
   
   <module package="com.aop.company.db" name="company"/>
-  
   <entity name="Department">
   
   <string name="departmentName" namecolumn="true"/> <!-- if value of name attribute is anything other than "name", then use nameColumn="true" -->

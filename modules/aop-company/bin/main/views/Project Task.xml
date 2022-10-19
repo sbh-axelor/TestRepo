@@ -4,16 +4,23 @@
   xsi:schemaLocation="http://axelor.com/xml/ns/object-views
   http://axelor.com/xml/ns/object-views/object-views_5.4.xsd">
   
+  <selection name="project.task.status.selection" >
+    <option value="todo">To-do</option>
+    <option value="active">Active</option>
+    <option value="complete">Completed</option>
+  </selection>
+  
   <grid name="project-task-grid" title="Project Tasks" model="com.aop.company.db.ProjectTask">
     <field name="name" title="Task Name"/>
     <field name="task" title="Project Task" />
  	<field name="status" />
  	<field name="priority" />
-
 	<field name="startDate" title="Start Date"/>
 	<field name="endDate" title="End Date"/>
 	<field name="progress" widget="Progress"/>
   </grid>
+  
+  
   
   <form name="project-task-form" title="Project Task" model="com.aop.company.db.ProjectTask">
     <panel title="Overview">
@@ -24,7 +31,7 @@
       <field name="startDate"/>
       <field name="endDate"/>
       <field name="projs" title="Parent Project" x-type="many-to-one" x-target="com.aop.company.db.Project" x-target-name="name" nameColumn="True" />
-     <!--  <field name="employee"/>  -->
+      <field name="employee"/>
       <field name="parentTask"/>
       <field name="sequence"/>
       <field name="progress" widget="Progress"/>
@@ -62,9 +69,19 @@
 		  x-finish-to-finish="finishToFinishTaskSet"
 		  x-start-to-finish="startToFinishTaskSet">
 		  <field name="name" />
-		  <field name="project" />
+		  <field name="projs" />
 		  <field name="employee" />
 	</gantt>
 	
+	
+	<calendar name="project.task.calendar" 
+			  model="com.aop.company.db.ProjectTask" 
+			  colorBy="employee"
+			  eventStart="startDate" 
+			  eventStop="endDate"  
+			  title="ProjectTask Calendar"
+			  eventLength="1">
+			  <field name="name"/>
+	</calendar>
    
 </object-views>

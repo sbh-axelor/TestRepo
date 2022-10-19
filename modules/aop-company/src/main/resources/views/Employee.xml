@@ -4,6 +4,13 @@
   xsi:schemaLocation="http://axelor.com/xml/ns/object-views
   http://axelor.com/xml/ns/object-views/object-views_5.4.xsd">
    
+   <selection name="employee.designation.selection">
+   	<option value="juniorDeveloper"> Junior Developer</option>
+   	<option value="seniorDeveloper"> Senior Developer</option>
+   	<option value="frontendDeveloper"> Frontend Engineer</option>
+   	<option value="tester"> Tester</option>
+   	<option value="adminSupport">Admin Support  </option>
+   </selection>
   
   
   	<form name="emp-form" title="Employees Form" model="com.aop.company.db.Employee" width="large">
@@ -39,13 +46,13 @@
 	    <field name="inHand"/>
 	  </panel>
 	    
-	  <panel-related name="empPanel" field="empProj">
+	  <panel-related name="empPanel" field="projectSet">
 	    <field name="projectName"/>
 	    <field name="projectManager"/>
 	    <field name="prStDate" title="Start Date"/>
 	  </panel-related>
 	</form>
-	
+	 
 	<grid model="com.aop.company.db.Employee" title="Employee Detail" name="emp-grid">
 	  <field name="empFullName" />
 	  <field name="designation" />

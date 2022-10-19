@@ -16,16 +16,16 @@
 	  
 	  <string name="email" required="true" unique="true" max="100" />
   	  <string name="phone" max="20" massUpdate="true"/> 
-	  <string name="designation" required="true"/>
+	  <string name="designation" selection="employee.designation.selection"/>
 	  <integer name="gross" />
 	  <integer name="inHand"/>
 	 
 	  	<!--<index columns="firstName,lastName" name="idx_empFullNames"/>   -->
-	  	<!-- m2o emp one dept  - bidirectional-->
-	 	<many-to-one ref="Department" name="empDept" />
+	  	<!-- m2o many emp one dept  - bidirectional-->
+	 	<many-to-one name="empDept" ref="Department" />
 	 
 	  		<!-- M2M - many emp- many projects -->
-	  		<many-to-many ref="Project" name="empProj" mappedBy="projEmp"/>
+	  		<many-to-many ref="Project" name="projectSet" mappedBy="employeeSet"/>
 	  		
 	  			<!--  O2M ONE EMP MANY LEAVE -->
 	  			<one-to-many ref="com.aop.company.db.Leaves" name="leavesList" mappedBy="leaves"/>

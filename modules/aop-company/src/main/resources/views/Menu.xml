@@ -125,12 +125,16 @@
 		<dashlet action="chart:chart.test.scatter"/>
 		<dashlet action="chart:chart.test.gauge"/>
 		<dashlet action="chart:chart.test.area"/>
-		<dashlet action="chart:chart.test.radar"/>
-		
-		
+		<dashlet action="chart:chart.test.radar"/>	
 	</dashboard>
 	
-	
+<!-- Calendar view -->
+	<menuitem name="projectTask-calendar" title="ProjectTask Calendar" parent="menu-comp-project-detail"  action="task.calendar"/>
+		<action-view name="task.calendar" title="Calendar.action" model="com.aop.company.db.ProjectTask">
+			<view type="calendar" name="project.task.calendar"/>
+		</action-view>
+		
+		
 	
 	
 </object-views>
