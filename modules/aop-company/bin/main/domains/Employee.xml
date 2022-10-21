@@ -9,6 +9,7 @@
   <entity name="Employee">
   	  <string name="degree" />
 	  <string name="firstName" required="true"  />
+	  <string name="middleName"/>
 	  <string name="lastName" required="true"  />
 	  <string name="empFullName" namecolumn="true">
 	  	<![CDATA[return firstName + " " + lastName;]]>
