@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<object-views xmlns="http://axelor.com/xml/ns/object-views"
+	<object-views xmlns="http://axelor.com/xml/ns/object-views"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://axelor.com/xml/ns/object-views
-  http://axelor.com/xml/ns/object-views/object-views_5.4.xsd">
+    http://axelor.com/xml/ns/object-views/object-views_5.4.xsd">
 
 	<menuitem title="Company Detail" name="menu-comp" />
 	
@@ -101,7 +101,7 @@
 	</action-view>
 	
 	<menuitem name="dashboard-item"
-            parent="proj.click"
+            parent="menu-comp-project"
             title="Project Task Dashboard"
             action="projectTask.dashboard"/>
 
@@ -129,7 +129,7 @@
 	</dashboard>
 	
 <!-- Calendar view -->
-	<menuitem name="projectTask-calendar" title="ProjectTask Calendar" parent="menu-comp-project-detail"  action="task.calendar"/>
+	<menuitem name="projectTask-calendar" title="ProjectTask Calendar" parent="menu-comp-project"  action="task.calendar"/>
 		<action-view name="task.calendar" title="Calendar.action" model="com.aop.company.db.ProjectTask">
 			<view type="calendar" name="project.task.calendar"/>
 		</action-view>

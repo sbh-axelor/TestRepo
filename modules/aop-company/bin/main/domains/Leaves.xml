@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<domain-models xmlns="http://axelor.com/xml/ns/domain-models"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://axelor.com/xml/ns/domain-models 
+  https://axelor.com/xml/ns/domain-models/domain-models_6.0.xsd">
+  
+  <module name="company" package="com.aop.company.db" />
+  
+  <entity name="Leaves" >
+  
+  <string name="name" title="Employee Name"/>
+  <date name="leaveDate" required="true " />
+  <string name="month" required="true"/>
+  <string name="reason" multiline="true" />
+  
+  <!-- 	M2O one empl can take many leaves -->
+  <many-to-one ref="com.aop.company.db.Employee" name="leaves" />
+  
+  </entity>
+  </domain-models>

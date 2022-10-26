@@ -13,18 +13,19 @@
    </selection>
   
   
-  	<form name="emp-form" title="Employees Form" model="com.aop.company.db.Employee" width="large">
+  	<form name="emp-form" title="Employees Form" model="com.aop.company.db.Employee" width="large" onNew="gross.show">
 	  <panel name="nameDetail-panel" title="Employee Overview">
 	    <field name="empFullName" readonly="false">
 	      <editor>
-	        <field name="firstName"/>
+	        <field name="firstName" />
 	        <field name="lastName"/>
 	      </editor>
 	    </field>
+	    <field name="dob"/>
 	  </panel>
 	  
-	  <panel name="contactDetail-panel">
-	    <field name="email">
+	  <panel name="contactDetail-panel" >
+	    <field name="email" >
 	      <viewer><![CDATA[ 
 	      	<a href="mailto:{{record.email}}">{{record.email}}</a>
 	  	  ]]></viewer>
@@ -37,12 +38,12 @@
 	  </panel>
 	  
 	  <panel name="deptmentDetail-panel">
-	    <field name="designation"/>
+	    <field name="designation" onChange="gross.show"/> <!-- onchange action attribute -->
 	    <field name="empDept" title="Department" x-target-name="departmentName" x-target="com.aop.company.db.Department" x-type="many-to-one"/>
 	  </panel>
 	  
 	  <panel name="salary-panel">
-	    <field name="gross"/>
+	    <field name="gross" />
 	    <field name="inHand"/>
 	  </panel>
 	    
@@ -86,7 +87,7 @@
   </cards>
   
   
-  <!-- Extention views -->
+ <!--  Extention views  -->
   
   <form model="com.aop.company.db.Employee" title="Employee" name="emp-form" id="employee-extention-form" extension="true">
 	<extend target="//field[@name='phone']"> 
@@ -103,6 +104,10 @@
 		</replace>
 	</extend>
   </form>
+ 
+  <action-attrs name="gross.show">
+  	 <attribute for="gross" name="readonly" expr="designation==null"  />
+  </action-attrs>
   
   
   </object-views>

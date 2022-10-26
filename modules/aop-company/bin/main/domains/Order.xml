@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<domain-models xmlns="http://axelor.com/xml/ns/domain-models"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://axelor.com/xml/ns/domain-models 
+  https://axelor.com/xml/ns/domain-models/domain-models_6.0.xsd">
+  
+  <module name="company" package="com.aop.company.db" />
+  
+  <entity name="Order">
+  
+  <string name="name" title="Product Name"/>
+  <string name="customer" title="Customer Name"/>
+  <string name="orderDate" title="Order Date" />
+  <string name="status"/>
+  <string name="confirmDate" />
+  
+  </entity>
+  
+  </domain-models>
