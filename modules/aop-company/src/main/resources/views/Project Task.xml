@@ -15,7 +15,7 @@
     <field name="task" title="Project Task" />
  	<field name="status" />
  	<field name="priority" />
-	<field name="startDate" title="Start Date"/>
+	<field name="startDate" title="Start Date" />
 	<field name="endDate" title="End Date"/>
 	<field name="progress" widget="Progress"/>
   </grid>
@@ -83,5 +83,7 @@
 			  eventLength="1">
 			  <field name="name"/>
 	</calendar>
+	
+	
    
 </object-views>

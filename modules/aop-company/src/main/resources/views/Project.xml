@@ -6,19 +6,21 @@
   
   <grid model="com.aop.company.db.Project" title="Project Detail" name="proj-grid">
 	  <field name="name" />
-	  <field name="priority" />
+	  <field name="priority"  />
 	  <field name="parent" />
+	  <field name="projectRecordDate" />
 	  <field name="prStDate" title="Start Date" />
 	  <field name="prEndDate" title="End Date" />  
   </grid>
   
-  <form model="com.aop.company.db.Project" title="Project Form" name="proj-form">
+  <form model="com.aop.company.db.Project" title="Project Form" name="proj-form" onNew="default-project-record" onSave="test-project-record">
   	<panel title="Overview">
   	  <field name="name" />
 	  <field name="priority" />
 	  <field name="parent"/>
-	  <field name="employeeSet" widget="TagSelect" canEdit="false" canNew="false" /> 
-	  <field name="prStDate" />
+	  <field name="employeeSet" widget="TagSelect" canEdit="false" canNew="false" />
+	  <field name="projectRecordDate" readonly="true"  />
+	  <field name="prStDate"/>
 		<field name="prEndDate" title="End Date" />	  
 	</panel>
 	 
@@ -37,4 +39,13 @@
 	  	 
 	  </panel-tabs>	  
   </form> 
+  
+  	<action-record name="default-project-record" model="com.aop.company.db.Project">
+		<field name="projectRecordDate" expr="eval:__date__"/>
+	</action-record>
+	
+	<action-method name="test-project-record" >
+	<call class="com.aop.company.web.ProjectController" method="record"/>
+	</action-method>
+  
 </object-views>

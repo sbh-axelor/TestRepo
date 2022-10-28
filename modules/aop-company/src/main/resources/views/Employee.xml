@@ -7,13 +7,13 @@
    <selection name="employee.designation.selection">
    	<option value="juniorDeveloper"> Junior Developer</option>
    	<option value="seniorDeveloper"> Senior Developer</option>
-   	<option value="frontendDeveloper"> Frontend Engineer</option>
+   	<option value="frontendDeveloper"> Frontend Developer</option>
    	<option value="tester"> Tester</option>
    	<option value="adminSupport">Admin Support  </option>
    </selection>
   
   
-  	<form name="emp-form" title="Employees Form" model="com.aop.company.db.Employee" width="large" onNew="gross.show">
+  	<form name="emp-form" title="Employees Form" model="com.aop.company.db.Employee" width="large" onNew="ctc.show">
 	  <panel name="nameDetail-panel" title="Employee Overview">
 	    <field name="empFullName" readonly="false">
 	      <editor>
@@ -38,13 +38,12 @@
 	  </panel>
 	  
 	  <panel name="deptmentDetail-panel">
-	    <field name="designation" onChange="gross.show"/> <!-- onchange action attribute -->
+	    <field name="designation" onChange="ctc.show"/> <!-- onchange action attribute -->
 	    <field name="empDept" title="Department" x-target-name="departmentName" x-target="com.aop.company.db.Department" x-type="many-to-one"/>
 	  </panel>
 	  
 	  <panel name="salary-panel">
-	    <field name="gross" />
-	    <field name="inHand"/>
+	    <field name="ctc" onChange="test.method.test"/>   
 	  </panel>
 	    
 	  <panel-related name="empPanel" field="projectSet">
@@ -60,7 +59,7 @@
 	  <field name="empDept" title="Department"/>
 	  <field name="email" />
 	  <field name="phone" />
-	  <field name="gross" title="Gross Salary"/>
+	  <field name="ctc" title="CTC" />
   	</grid>
   
    <cards name="emp-card" model="com.aop.company.db.Employee" title="Employee Id Card">
@@ -69,6 +68,7 @@
   	<field name="email" />
   	<field name="address" />
  	<field name="image" />
+ 	
       <template>
  		<![CDATA[
  			<div class="span4 card-image">
@@ -90,11 +90,11 @@
  <!--  Extention views  -->
   
   <form model="com.aop.company.db.Employee" title="Employee" name="emp-form" id="employee-extention-form" extension="true">
-	<extend target="//field[@name='phone']"> 
+	<!-- <extend target="//field[@name='phone']"> 
 		<replace>
 			<field name="contact-details"/>
 		</replace>
-	</extend>
+	</extend> -->
 	
 	<extend target="//field[@name='empFullName']"> 
 		<replace>
@@ -105,9 +105,13 @@
 	</extend>
   </form>
  
-  <action-attrs name="gross.show">
-  	 <attribute for="gross" name="readonly" expr="designation==null"  />
+  <action-attrs name="ctc.show">
+  	 <attribute for="ctc" name="readonly" expr="designation==null"  />
   </action-attrs>
   
+  <action-method name="test.method.test">
+  	<call class="com.axelor.test.TestClass" method="testMethod"/>
+  </action-method>
+ 
   
   </object-views>

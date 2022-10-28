@@ -9,6 +9,7 @@
   <entity name="Project">
 	  <string name="name" />
 	  <integer name="priority" />
+	  <string name="projectRecordDate" />
 	  <date name="prStDate" />
 	  <date name="prEndDate"/>
 	  <string name="notes" multiline="true" />
