@@ -24,7 +24,7 @@ public class ProjectController {
 		 * project.getProjectRecordDate().toString();
 		 */
 		
-		response.setNotify(message);
+		response.setAlert(message);
 		
 		/* response.setAlert(message); */
 		

@@ -15,6 +15,12 @@
 	<menuitem title="Tasks" name="menu-comp-project-task" parent="menu-comp-project" action="projectTask.click"/>
 	<menuitem title="Sub-Tasks" name="menu-comp-project-subtask" parent="menu-comp-project" action="projectSubTask.click"/>
 	<menuitem title="Task Tree" name="menu-comp-project-tree" parent="menu-comp-project" action="projectTaskTree.click"/>
+	
+	<menuitem title="Client" name="menu-comp-client" parent="menu-comp" action="client.click"/>
+		<action-view name="client.click" title="Clients" model="com.aop.company.db.Client">
+			<view type="grid" name="client-grid"/>
+			<view type="form" name="client-form"/>
+		</action-view>
 			
 	<!--  <menuitem name="menu-project-tasks-tree" parent="menu-comp" title="Project Tasks (tree)" action="project.tasks.tree" /> -->
 	

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<object-views xmlns="http://axelor.com/xml/ns/object-views"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://axelor.com/xml/ns/object-views
+  	http://axelor.com/xml/ns/object-views/object-views_5.4.xsd">
+  	
+  	<grid model="com.aop.company.db.Client" title="Client Detail" name="client-grid">
+  		<field name="name" required="true" />
+  		<field name="clientCompany" />
+  		<field name="email" />
+  		<field name="phone" />
+  	</grid>
+  	
+  	<form model="com.aop.company.db.Client" title="Client Form" name="client-form">
+  		<field name="name" required="true" />
+  		<field name="clientCompany" />
+  		<field name="email" />
+  		<field name="phone" />
+  	</form>
+  	
+  	</object-views>

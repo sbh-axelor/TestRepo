@@ -13,7 +13,8 @@
    </selection>
   
   
-  	<form name="emp-form" title="Employees Form" model="com.aop.company.db.Employee" width="large" onNew="ctc.show">
+  <!-- 	<form name="emp-form" title="Employees Form" model="com.aop.company.db.Employee" width="large" onNew="ctc.show"> -->
+  	<form name="emp-form" title="Employees Form" model="com.aop.company.db.Employee" width="large" onSave="emp-detail-check" >
 	  <panel name="nameDetail-panel" title="Employee Overview">
 	    <field name="empFullName" readonly="false">
 	      <editor>
@@ -43,7 +44,14 @@
 	  </panel>
 	  
 	  <panel name="salary-panel">
-	    <field name="ctc" onChange="test.method.test"/>   
+	  <field name = "ctc" title="Employee Salary" >
+	    <editor>
+	   		 <field name="ctc" onChange="test.method.test"/>
+	    </editor>
+	    </field>
+	    <field name="basic" readonly="true" />    
+	    <field name="hra" title="HRA" readonly="true"/>
+	    <field name="boa" titld="BOA" readonly="true"/>
 	  </panel>
 	    
 	  <panel-related name="empPanel" field="projectSet">
@@ -58,8 +66,10 @@
 	  <field name="designation" />
 	  <field name="empDept" title="Department"/>
 	  <field name="email" />
-	  <field name="phone" />
 	  <field name="ctc" title="CTC" />
+	  <button name="btnInfo" icon="fa-info" title="Salary Breakdown" onClick="action-validate-ctc" />
+	 <field name="phone" />
+
   	</grid>
   
    <cards name="emp-card" model="com.aop.company.db.Employee" title="Employee Id Card">
@@ -89,7 +99,7 @@
   
  <!--  Extention views  -->
   
-  <form model="com.aop.company.db.Employee" title="Employee" name="emp-form" id="employee-extention-form" extension="true">
+  <form model="com.aop.company.db.Employee" title="Employee" name="emp-form" id="employee-extention-form" extension="true" >
 	<!-- <extend target="//field[@name='phone']"> 
 		<replace>
 			<field name="contact-details"/>
@@ -113,5 +123,65 @@
   	<call class="com.axelor.test.TestClass" method="testMethod"/>
   </action-method>
  
+  <action-method name="act1">
+  	<call class="com.aop.company.web.SalaryController" method="SalaryDet"/>
+  </action-method>
+  
+  <!-- <action-script name="act2" model="com.aop.company.db.Employee">
+		<script language="js">
+		<![CDATA[		
+		var req= $request;
+		var res=$response;
+		var co = req.context;
+		var ctc1 = co.get('ctc')
+		var base = ctc1*0.4
+		res.setFlash(base);		
+		]]>		
+		</script>
+  </action-script> -->
+  
+  
+  <action-validate name="check-ctc">
+	  <error message="CTC cannot be less than one!!" if="eval: ctc &lt; 1" />
+  </action-validate> 
+  
+  <action-group name="action-validate-ctc">
+	  <action name="check-ctc"/>
+	  <action name="act1" />
+  </action-group> 
+  
+
+  
+  <action-condition name="form-condition">
+  		<check field="phone" error="Employee Phone Num cannot be Empty"/>
+  		<check field="ctc" if="eval: ctc &lt; 1" error="CTC cannot be 0" />
+  </action-condition>
+  
+  <action-validate name="ctc-validation">
+  		<error if="eval: ctc &lt; 10000" message="CTC too low"/>  
+  </action-validate>
+  
+  <action-script name="salary-calcu-script" model="com.aop.company.db.Employee">
+  		<script language="js">
+  			<![CDATA[ 
+  				var req= $request;
+				var res=$response;
+				var co=req.context;
+				var empCtc=co.get ('ctc');
+				var basic=empCtc*0.4;
+				var hra=empCtc*0.2;
+				var boa=empCtc*0.4;
+				res.setValue('basic', basic);
+				res.setValue('hra', hra);
+				res.setValue('boa', boa);
+			]]>
+  		</script>
+  </action-script>
+  
+    <action-group name="emp-detail-check">
+  		<action name="form-condition"/>
+  		<action name="ctc-validation"/>
+  		<action name="salary-calcu-script"/>
+  </action-group>
   
   </object-views>

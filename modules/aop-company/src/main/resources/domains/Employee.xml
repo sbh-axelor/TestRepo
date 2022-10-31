@@ -20,6 +20,9 @@
   	  <string name="phone" max="10" massUpdate="true"/> 
 	  <string name="designation" selection="employee.designation.selection"/>
 	  <decimal name="ctc"/>
+	  <decimal name="basic"/>
+	  <decimal name="hra" />
+	  <decimal name="boa"/>
 	  
 
 	 
