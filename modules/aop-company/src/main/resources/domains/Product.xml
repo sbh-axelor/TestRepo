@@ -8,8 +8,10 @@
   
   <entity name="Product">
   
-  <string name="name" title="Product Name" />
-  <string name="code" title="Product Code" />
+	  <string name="name" title="Product Name" />
+	  <string name="code" title="Product Code" />
+	  <string name="purchaseDate" />
+	  <integer name="cost"/>
   
   </entity>
   </domain-models>

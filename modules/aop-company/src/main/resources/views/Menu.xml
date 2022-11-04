@@ -21,6 +21,12 @@
 			<view type="grid" name="client-grid"/>
 			<view type="form" name="client-form"/>
 		</action-view>
+		
+	<menuitem title="Product" name="menu-comp-product" parent="menu-comp" action="product.click"/>
+		<action-view name="product.click" title="Prducts" model="com.aop.company.db.Product">
+			<view type="grid" name="product-grid" />
+			<view type="form" name="product-form"/>
+		</action-view>
 			
 	<!--  <menuitem name="menu-project-tasks-tree" parent="menu-comp" title="Project Tasks (tree)" action="project.tasks.tree" /> -->
 	

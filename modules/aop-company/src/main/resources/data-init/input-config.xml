@@ -3,23 +3,45 @@
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xsi:schemaLocation="http://axelor.com/xml/ns/data-import https://axelor.com/xml/ns/data-import/data-import_6.0.xsd">
   
-  <input file="client.csv" type="com.aop.company.db.Client"> 
-  		<bind column="client" to="clientCompany" />
-  		<!-- <bind column="name" to="name"  /> -->
-  		
-  		<bind to="email" column="email" search="self.email=:email" if="!email.empty"/>
-  		<!-- <bind column="email" to="email" />
-  		</bind> -->
-  		
-  		<bind to="email" eval="hi" if="email.empty" >
-<!--   		<bind to="email" eval='"${firstName}.${lastName}@gmail.com".toLowerCase()'/> -->
+  <input file="client.csv" type="com.aop.company.db.Client">
+  <!-- <input file="state.csv" type="com.aop.company.db.State"/> -->
+   
+  		<bind column="client" to="clientCompany" />		
+  	 	<bind column="name" to="name"  /> 	<!-- this can be omitted as field & column have same name -->
+  	
+  		<bind to="email" search="self.email=:email" if="!email.empty">
+  		<bind column="email" to="email" />
   		</bind>
   		
   		<bind to="client" search="self.name=:country" >
   		<!-- client here is the o2o mapped name / search in self (i.e client, name field, this is := to country) -->
-  		<bind to="name" column="country"/>
+  		<bind to="name" column="country"/> <!-- value of field name to be placed in column country -->
   		<!-- bind the above field name to column country -->
+  		<bind column="country" to="state" search="self.name in=:country" eval="country.split('\\|') as List"/>
+  		</bind>
+  				
+  		<!-- <bind to="projects"> in client o2m relation named projects, bind field name with csv file column project
+  			<bind to="name" column="project"/>
+  		</bind> -->
+  		
+  		<!-- <bind to="productList" search="self.name=:product">
+  			<bind to="name" column="product" />
+  		</bind> -->
+  		
+  		<bind to="state" search="self.name=:state">
+  			<bind to="name" column="state" />
   		</bind>
   	
   </input>
+  
+  
+  <!--here separator defines the delimeter used for separating fields in file -->
+  <!-- <input file="client.csv" type="com.aop.company.db.Client" separator="." 
+   search="self.code=:code AND self.name=:name" update="true"/> -->
+  
+  
+  <!-- usage of separator attribute to declare the delimeter used in import file -->
+  <!-- <input file="state.csv" type="com.aop.company.db.State" separator="\t" 
+   search="self.country=:country AND self.name=:name" update="true"/> -->
+  
  </csv-inputs>

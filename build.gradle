@@ -37,12 +37,19 @@ allprojects {
 
   sourceCompatibility = 1.8
   targetCompatibility = 1.8
+  
 }
-
 dependencies {
   // add module dependencies
   implementation project(':modules:aop-company')
   
+  // Use JUnit Jupiter for testing.
+   //implementation 'org.junit.jupiter:junit-jupiter:5.7.2' 
+  
+  // https://mvnrepository.com/artifact/net.lamberto.junit/guice-junit-runner
+   //implementation group: 'net.lamberto.junit', name: 'guice-junit-runner', version: '1.0.1'
+  
+   
 }
 
 wrapper {
@@ -50,5 +57,5 @@ wrapper {
 }
 
 war {
-  archiveFileName = 'open-platfrom-demo.war'
+  archiveFileName = 'Aop_project.war'
 }
