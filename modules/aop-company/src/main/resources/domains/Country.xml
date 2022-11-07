@@ -9,6 +9,7 @@
 	  <entity name="Country">
 		  <string name="code" />
 		  <string name="name" /> 
+		  <string name="projects" /> 
 		  <many-to-one ref="com.aop.company.db.Continent" name="continent" />		  	  
 	  </entity>
  </domain-models>

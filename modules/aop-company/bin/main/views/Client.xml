@@ -12,10 +12,19 @@
   	</grid>
   	
   	<form model="com.aop.company.db.Client" title="Client Form" name="client-form">
-  		<field name="name" required="true" />
-  		<field name="clientCompany" />
-  		<field name="email" />
-  		<field name="phone" />
+  		<panel name="clientInformation">
+	  		<field name="name" required="true" />
+	  		<field name="clientCompany" />
+	  		<field name="email" />
+	  		<field name="phone" />
+  		
+  		<panel-related name="projectDomains" field="clientDomain">
+  			<field name="clientDomain"/>
+  		</panel-related>
+  		
+  		</panel>
+  		
+
   	</form>
   	
   	</object-views>

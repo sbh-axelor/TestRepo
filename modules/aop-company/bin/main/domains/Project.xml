@@ -23,8 +23,8 @@
 		  <!-- O2M - one project - many project Task 	  -->
 		  <one-to-many name="projT" ref="com.aop.company.db.ProjectTask"  mappedBy="projs" title="Tasks"/> 
 		  
-		  <!-- M2O many projects one client -->
-		  <many-to-one name="project" ref="com.aop.company.db.Client" />
+		  <!-- M2O many projects one client 
+		  <many-to-one name="project" ref="com.aop.company.db.Client" /> -->
 		  
 		  	 
   </entity>

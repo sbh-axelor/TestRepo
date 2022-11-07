@@ -26,7 +26,7 @@ import org.junit.runner.RunWith;
 
 import com.aop.company.db.repo.CountryRepository;
 import com.axelor.data.Importer;
-import com.axelor.data.csv.CSVImporter;
+import com.axelor.data.xml.XMLImporter;
 import com.axelor.inject.Beans;
 import com.axelor.test.GuiceModules;
 import com.axelor.test.GuiceRunner;
@@ -34,16 +34,20 @@ import com.axelor.test.GuiceRunner;
 @RunWith(GuiceRunner.class)
 @GuiceModules(DataModule.class)
 
-public class CSVDataTest extends DataModule {
+public class XmlDataTest extends DataModule {
 	
 	@Test
 	public void countryImportMethod() throws IOException{
 		System.err.println(Beans.get(CountryRepository.class).all().fetch());
-		Importer importer = new CSVImporter("data/csv-config.xml", "data/csv");
-		//Importer importer = new CSVImporter("data/csv-config.xml", "data/csv");
+		Importer importer = new XMLImporter("data/xml-config.xml", "data/xml");
 		importer.run();
 		System.err.println(Beans.get(CountryRepository.class).all().fetch());
 	}
 	
+	  @Test
+	  public void testTypes() throws IOException {
+	    Importer importer = new XMLImporter("data/xml-config-types.xml", "data/xml");
+	    importer.run();
+	  }
 
 }

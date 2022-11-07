@@ -13,17 +13,17 @@
 	  		<string name="phone"/>  
 	  		
 	  		<!-- O2O one client one country -->
-	  		<one-to-one ref="com.aop.company.db.Country" name="client" />
+	  		<one-to-one ref="com.aop.company.db.Country" name="client"  />
 	  		
-	  		<!-- O2M - one client many projects -->
-	  		<one-to-many ref="com.aop.company.db.Project" name="projects" mappedBy="project"/>
-	  		
-	  		<!-- M2M many clients can order 1 product, 1 client can order many products -->
+	  		<!-- O2M - one client many project domains -->
+	  		<one-to-many ref="com.aop.company.db.ProjectDomain" name="clientDomain" mappedBy="projectDomain"/> 
+	  		<!-- 
+	  		M2M many clients can order 1 product, 1 client can order many products
 	  		<many-to-many ref="com.aop.company.db.Product" name="productList"/>
 	  		
-	  		<!-- M2O many client from one state -->
+	  		M2O many client from one state
 	  		<many-to-one ref="com.aop.company.db.State" name="state" />
-	  		
+	  		 -->
 	  		
 	  </entity>
 </domain-models>

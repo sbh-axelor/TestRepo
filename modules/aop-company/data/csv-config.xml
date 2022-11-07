@@ -4,11 +4,16 @@
   xsi:schemaLocation="http://axelor.com/xml/ns/data-import https://axelor.com/xml/ns/data-import/data-import_6.0.xsd">
 
   <input file="country.csv" type="com.aop.company.db.Country"/>
+  <input file="project_domain.csv" type="com.aop.company.db.ProjectDomain" />
   
 
   <input file="country.csv" type="com.aop.company.db.Country" search="self.code = :code" update="true">
     <bind to="code" column="code"/>
     <bind to="name" column="name" if-empty="true"/>
+  </input>
+  
+  <input file="project_domain.csv" type="com.aop.company.db.ProjectDomain" update="true" >
+  <bind to="name" column="name"/>
   </input>
 
 </csv-inputs>
